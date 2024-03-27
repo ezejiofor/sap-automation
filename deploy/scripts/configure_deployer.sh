@@ -252,7 +252,7 @@ ansible_pip3="${ansible_venv_bin}/pip3"
 asad_home="${HOME}/Azure_SAP_Automated_Deployment"
 asad_ws="${asad_home}/WORKSPACES"
 asad_repo="https://github.com/ezejiofor/sap-automation.git"
-asad_sample_repo="https://github.com/Azure/sap-automation-samples.git"
+asad_sample_repo="https://github.com/ezejiofor/sap-automation-samples.git"
 asad_dir="${asad_home}/$(basename ${asad_repo} .git)"
 asad_sample_dir="${asad_home}/samples"
 

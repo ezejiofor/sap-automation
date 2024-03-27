@@ -2,8 +2,8 @@
   "deployer": {
     "urls": [
       "https://github.com/ezejiofor/sap-automation",
-      "https://github.com/Azure/sap-automation-samples",
-      "https://github.com/Azure/sap-automation-bootstrap",
+      "https://github.com/ezejiofor/sap-automation-samples",
+      "https://github.com/ezejiofor/sap-automation-bootstrap",
       "https://packages.microsoft.com/keys/microsoft.asc",
       "https://releases.hashicorp.com/",
       "https://registry.terraform.io",

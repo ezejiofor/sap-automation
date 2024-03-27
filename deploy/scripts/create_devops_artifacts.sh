@@ -77,7 +77,7 @@ if [ -z $id ]; then
   repo_id=$(az repos list --org $ADO_ORGANIZATION --project $id --query "[].id | [0]" | tr -d \")
 
   echo "Importing the repo"
-  az repos import create --git-url https://github.com/Azure/sap-automation-bootstrap.git --org  $ADO_ORGANIZATION --project $id --repository $repo_id --output none
+  az repos import create --git-url https://github.com/ezejiofor/sap-automation-bootstrap.git --org  $ADO_ORGANIZATION --project $id --repository $repo_id --output none
 
   az repos update --repository $repo_id --org $ADO_ORGANIZATION --project $id --default-branch main
 

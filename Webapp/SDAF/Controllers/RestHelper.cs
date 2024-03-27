@@ -27,7 +27,7 @@ namespace AutomationForm.Controllers
     private readonly string sdafControlPlaneEnvironment;
     private readonly string sdafControlPlaneLocation;
 
-    private readonly string sampleUrl = "https://api.github.com/repos/Azure/SAP-automation-samples";
+    private readonly string sampleUrl = "https://api.github.com/repos/ezejiofor/SAP-automation-samples";
     private HttpClient client;
     public RestHelper(IConfiguration configuration)
     {
