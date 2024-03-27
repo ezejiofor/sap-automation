@@ -45,7 +45,7 @@ This section captures fundamentals on how new features should be developed and f
 
 1. **Close on design before sending PRs**
 
-- Add and describe design by creating an issue [here](https://github.com/Azure/sap-automation/issues). Discussions on the design will happen in the issue page.
+- Add and describe design by creating an issue [here](https://github.com/ezejiofor/sap-automation/issues). Discussions on the design will happen in the issue page.
 
 1. **Design for modularity, easy versioning, easy deployment and rollback**
 
@@ -54,7 +54,7 @@ This section captures fundamentals on how new features should be developed and f
 
 ### PR guidelines
 
-1. Required information in PR ([example](https://github.com/Azure/sap-automation/pull/480)):
+1. Required information in PR ([example](https://github.com/ezejiofor/sap-automation/pull/480)):
      - Always link to the issue that is is trying to resolve with tag **Closes**.
 
 - Describe the **Problem** that it tries to resolve.
@@ -81,7 +81,7 @@ We need to ensure quality along with agility. We need to move to everyone agreei
 2. In additional to Basics, PR reviews need to focus on the quality of a PR. eg. catching potential issues/bugs, semantic problems, nitpicks, etc...
 3. Keep PRs in an open published state for at least one working day, which would allow everyone in other regions to review.
 4. For hotfixes, keep PRs open for at least 4 business hrs.
-5. The maintainer is [here](https://github.com/Azure/sap-automation/blob/main/CODEOWNERS).
+5. The maintainer is [here](https://github.com/ezejiofor/sap-automation/blob/main/CODEOWNERS).
 
 ### Release strategy
 

@@ -299,7 +299,7 @@ if ($confirmation -ne 'y') {
   Write-Host "Creating $repo_name repository" -ForegroundColor Green
   az repos create --name $repo_name --query id --output none
   $code_repo_id = (az repos list --query "[?name=='$repo_name'].id | [0]" --out tsv)
-  az repos import create --git-url https://github.com/Azure/SAP-automation --repository $code_repo_id --output none
+  az repos import create --git-url https://github.com/ezejiofor/SAP-automation --repository $code_repo_id --output none
   az repos update --repository $code_repo_id --default-branch main --output none
 
   $import_code = $true
@@ -336,7 +336,7 @@ if ($confirmation -ne 'y') {
     Add-Content -Path $templatename "    - repository: sap-automation"
     Add-Content -Path $templatename "      type: git"
     Add-Content -Path $templatename "      name: $ADO_Project/sap-automation"
-    Add-Content -Path $templatename -Value ("      ref: refs/heads/main")
+    Add-Content -Path $templatename -Value ("       ref: refs/heads/main")
     #Add-Content -Path $templatename -Value ("      ref: refs/tags/" + $versionLabel)
 
     $cont = Get-Content -Path $templatename -Raw
@@ -385,7 +385,7 @@ if ($confirmation -ne 'y') {
     Add-Content -Path $templatename "    - repository: sap-automation"
     Add-Content -Path $templatename "      type: git"
     Add-Content -Path $templatename "      name: $ADO_Project/sap-automation"
-    Add-Content -Path $templatename -Value ("      ref: refs/heads/main")
+    Add-Content -Path $templatename -Value ("       ref: refs/heads/main")
     #Add-Content -Path $templatename -Value ("      ref: refs/tags/" + $versionLabel)
     Add-Content -Path $templatename "    - repository: sap-samples"
     Add-Content -Path $templatename "      type: git"
@@ -469,8 +469,8 @@ else {
   Add-Content -Path $templatename "    - repository: sap-automation"
   Add-Content -Path $templatename "      type: GitHub"
   Add-Content -Path $templatename -Value ("      endpoint: " + $ghConn)
-  Add-Content -Path $templatename "      name: Azure/sap-automation"
-  Add-Content -Path $templatename "     ref: refs/heads/main"
+  Add-Content -Path $templatename "      name: ezejiofor/sap-automation"
+  Add-Content -Path $templatename "      ref: refs/heads/main"
 #  Add-Content -Path $templatename -Value ("      ref: refs/tags/" + $versionLabel)
 
   $cont = Get-Content -Path $templatename -Raw
@@ -519,7 +519,7 @@ else {
   Add-Content -Path $templatename "   - repository: sap-automation"
   Add-Content -Path $templatename "     type: GitHub"
   Add-Content -Path $templatename -Value ("     endpoint: " + $ghConn)
-  Add-Content -Path $templatename "     name: Azure/sap-automation"
+  Add-Content -Path $templatename "     name: ezejiofor/sap-automation"
   Add-Content -Path $templatename "     ref: refs/heads/main"
   Add-Content -Path $templatename "   - repository: sap-samples"
   Add-Content -Path $templatename "     type: GitHub"

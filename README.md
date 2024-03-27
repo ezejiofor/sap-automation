@@ -6,7 +6,7 @@ The framework uses Terraform for infrastructure deployment, and Ansible for the 
 
 ## Enterprise-scale  - Reference Implementation
 
-![Ansible Lint](https://github.com/Azure/sap-automation/workflows/Ansible%20Lint/badge.svg)    [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/azure/sap-automation.svg)](http://isitmaintained.com/project/azure/sap-automation "Average time to resolve an issue")    [![Percentage of issues still open](http://isitmaintained.com/badge/open/azure/sap-automation.svg)](http://isitmaintained.com/project/azure/sap-automation "Percentage of issues still open")
+![Ansible Lint](https://github.com/ezejiofor/sap-automation/workflows/Ansible%20Lint/badge.svg)    [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/ezejiofor/sap-automation.svg)](http://isitmaintained.com/project/ezejiofor/sap-automation "Average time to resolve an issue")    [![Percentage of issues still open](http://isitmaintained.com/badge/open/ezejiofor/sap-automation.svg)](http://isitmaintained.com/project/ezejiofor/sap-automation "Percentage of issues still open")
 
 ## Partnership
 
@@ -20,7 +20,7 @@ The user guidance can be located here [SAP deployment automation framework](http
 
 If you want to contribute to our project, be sure to review the [contributing guidelines](/CONTRIBUTING.md).
 
-We use [GitHub issues](https://github.com/Azure/sap-automation/issues/) for feature requests and bugs.
+We use [GitHub issues](https://github.com/ezejiofor/sap-automation/issues/) for feature requests and bugs.
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us

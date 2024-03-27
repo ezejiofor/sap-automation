@@ -11,7 +11,7 @@ In the resources.yml configure the following configuration by replacing ```<MyGi
 ``` yaml
     - repository: sap-automation
       type: github
-      name: Azure/sap-automation
+      name: ezejiofor/sap-automation
       endpoint: <MyGithubConnector>
       ref: refs/heads/main
 ```

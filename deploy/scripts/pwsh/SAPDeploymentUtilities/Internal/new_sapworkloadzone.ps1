@@ -28,7 +28,7 @@ function New-SAPWorkloadZone {
 
     
 .LINK
-    https://github.com/Azure/sap-automation
+    https://github.com/ezejiofor/sap-automation
 
 .NOTES
     v0.1 - Initial version
