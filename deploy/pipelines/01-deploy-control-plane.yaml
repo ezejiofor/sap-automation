@@ -665,7 +665,7 @@ stages:
 
                           pwd
 
-                          sudo chmod +xr $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+                          sudo chmod +rx $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
 
                           ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
 
