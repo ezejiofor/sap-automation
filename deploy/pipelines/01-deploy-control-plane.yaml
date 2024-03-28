@@ -73,6 +73,34 @@ stages:
                 - template:            templates\download.yaml
                 - task:                PostBuildCleanup@4
                 # Set Variables.
+                # set permission on deploy_controlplane.sh file
+                - task:                AzureCLI@2
+                  continueOnError:     false
+                  inputs:
+                    azureSubscription: ${{parameters.connection_name}}
+                    scriptType:        bash
+                    scriptLocation:    inlineScript
+                    addSpnToEnvironment: true
+                    inlineScript: |
+                      #!/bin/bash
+
+                        echo "Debugging: Checking current permissions and environment information"
+                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Current user:"
+                        whoami
+
+                        echo "Current working directory:"
+                        pwd
+
+                        echo "Setting execute permissions for deploy_controlplane.sh"
+                        sudo chmod +x $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Debugging: Verifying permissions after setting execute permissions"
+                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Debugging: Executing deploy_controlplane.sh script"
+                        $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
                 - task:                AzureCLI@2
                   continueOnError:     false
                   inputs:
