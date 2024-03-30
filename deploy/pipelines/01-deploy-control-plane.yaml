@@ -93,23 +93,20 @@ stages:
                         echo "Current working directory:"
                         pwd
 
-                        echo "Listing files and directories in the working directory:"
-                        ls -lsa
+#                        echo "Listing files and directories in the working directory:"
+#                        ls -lsa
+#
+#                        echo "Listing files and directories in the sap-automation directory:"
+#                        ls -lsa
 
-                        echo "Listing files and directories in the sap-automation directory:"
-                        ls -lsa
-
-                        echo "Listing files and directories in the sap-automation directory:"
-                        ls -lsa sap-automation/
-
-                        echo "Listing files and directories in the scripts folder within the deploy folder:"
-                        ls -lsa sap-automation/deploy/scripts/
-
-
-
+#                        echo "Listing files and directories in the sap-automation directory:"
+#                        ls -lsa sap-automation/
+#
+#                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+#                        ls -lsa sap-automation/deploy/scripts/
 
                         echo "Listing files and directories in the repo directory:"
-                        ls -lsa $SAP_AUTOMATION_REPO_PATH/
+                        ls -lsa $SAP_AUTOMATION_REPO_PATH/home/vsts/work/1/s
 
 
                         echo "Setting execute permissions for deploy_controlplane.sh"
