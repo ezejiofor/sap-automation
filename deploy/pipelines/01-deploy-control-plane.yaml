@@ -92,32 +92,28 @@ stages:
 
                         echo "Current working directory:"
                         pwd
-#
-##                        echo "Listing files and directories in the working directory:"
-##                        ls -lsa
-##
-##                        echo "Listing files and directories in the sap-automation directory:"
-##                        ls -lsa
-#
-##                        echo "Listing files and directories in the sap-automation directory:"
-##                        ls -lsa sap-automation/
-##
-##                        echo "Listing files and directories in the scripts folder within the deploy folder:"
-##                        ls -lsa sap-automation/deploy/scripts/
-#
-#                        echo "Listing files and directories in the repo directory:"
-#                        ls -lsa $SAP_AUTOMATION_REPO_PATH/sap-automation/
-#                        #/home/vsts/work/1/s
-#
-#
-#                        echo "Setting execute permissions for deploy_controlplane.sh"
-#                        sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
-#
-#                        echo "Listing files and directories in the scripts folder within the deploy folder:"
-#                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
-#
-#                        echo "Debugging: Executing deploy_controlplane.sh script"
-#                        sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Listing files and directories in the working directory:"
+                        ls -lsa
+
+
+                        echo "Listing files and directories in the sap-automation directory:"
+                        ls -lsa sap-automation/
+
+                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+
+
+
+                        echo "Setting execute permissions for deploy_controlplane.sh"
+                        sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Debugging: Executing deploy_controlplane.sh script"
+                        ./sap-automation/deploy/scripts/deploy_controlplane.sh
+
                 - task:                AzureCLI@2
                   continueOnError:     false
                   inputs:
@@ -700,37 +696,37 @@ stages:
                           if [ -f ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)/state.zip ]; then
                             pass=$(echo $DEPLOYER_RANDOM_ID_SEED | sed 's/-//g')
                             unzip -qq -o -P "${pass}" ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)/state.zip -d ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)
-                          fi
+                        #   fi
 
-                          export TF_LOG_PATH=${CONFIG_REPO_PATH}/.sap_deployment_automation/terraform.log
+                        #   export TF_LOG_PATH=${CONFIG_REPO_PATH}/.sap_deployment_automation/terraform.log
 
-                          ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+                        #   ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
 
-                          whoami
+                        #   whoami
 
-                          pwd
+                        #   pwd
 
-                          sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
+                        #   sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
 
-                          ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+                        #   ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
 
-                          if [ "$USE_MSI" = "true" ]; then
-                            echo -e "$cyan--- Using MSI ---$reset"
-                            sap-automation/deploy/scripts/deploy_controlplane.sh                              \
-                              --deployer_parameter_file ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)/$(deployerconfig) \
-                              --library_parameter_file ${CONFIG_REPO_PATH}/LIBRARY/$(libraryfolder)/$(libraryconfig)     \
-                              --subscription $STATE_SUBSCRIPTION                                                         \
-                              --auto-approve --ado --msi                                                                 \
-                              ${storage_account_parameter} ${keyvault_parameter}
-                          else
-                            sap-automation/deploy/scripts/deploy_controlplane.sh                              \
-                              --deployer_parameter_file ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)/$(deployerconfig) \
-                              --library_parameter_file ${CONFIG_REPO_PATH}/LIBRARY/$(libraryfolder)/$(libraryconfig)     \
-                              --subscription $STATE_SUBSCRIPTION  --spn_id $ARM_CLIENT_ID                                \
-                              --spn_secret $ARM_CLIENT_SECRET --tenant_id $ARM_TENANT_ID                                 \
-                              --auto-approve --ado                                                                       \
-                              ${storage_account_parameter} ${keyvault_parameter}
-                          fi
+                        #   if [ "$USE_MSI" = "true" ]; then
+                        #     echo -e "$cyan--- Using MSI ---$reset"
+                        #     sap-automation/deploy/scripts/deploy_controlplane.sh                              \
+                        #       --deployer_parameter_file ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)/$(deployerconfig) \
+                        #       --library_parameter_file ${CONFIG_REPO_PATH}/LIBRARY/$(libraryfolder)/$(libraryconfig)     \
+                        #       --subscription $STATE_SUBSCRIPTION                                                         \
+                        #       --auto-approve --ado --msi                                                                 \
+                        #       ${storage_account_parameter} ${keyvault_parameter}
+                        #   else
+                        #     sap-automation/deploy/scripts/deploy_controlplane.sh                              \
+                        #       --deployer_parameter_file ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)/$(deployerconfig) \
+                        #       --library_parameter_file ${CONFIG_REPO_PATH}/LIBRARY/$(libraryfolder)/$(libraryconfig)     \
+                        #       --subscription $STATE_SUBSCRIPTION  --spn_id $ARM_CLIENT_ID                                \
+                        #       --spn_secret $ARM_CLIENT_SECRET --tenant_id $ARM_TENANT_ID                                 \
+                        #       --auto-approve --ado                                                                       \
+                        #       ${storage_account_parameter} ${keyvault_parameter}
+                        #   fi
 
                           return_code=$?
 
