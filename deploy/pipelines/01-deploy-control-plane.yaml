@@ -106,7 +106,8 @@ stages:
 #                        ls -lsa sap-automation/deploy/scripts/
 
                         echo "Listing files and directories in the repo directory:"
-                        ls -lsa $SAP_AUTOMATION_REPO_PATH/home/vsts/work/1/s
+                        ls -lsa $SAP_AUTOMATION_REPO_PATH/sap-automation/
+                        #/home/vsts/work/1/s
 
 
                         echo "Setting execute permissions for deploy_controlplane.sh"
