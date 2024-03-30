@@ -93,6 +93,13 @@ stages:
                         echo "Current working directory:"
                         pwd
 
+                        echo "Listing files and directories in the working directory:"
+                        ls -lsa
+
+                        echo "Listing files and directories in the script directory:"
+                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/
+
+
                         echo "Setting execute permissions for deploy_controlplane.sh"
                         sudo chmod +x $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
 
