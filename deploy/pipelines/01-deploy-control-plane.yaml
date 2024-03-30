@@ -96,6 +96,9 @@ stages:
                         echo "Listing files and directories in the working directory:"
                         ls -lsa
 
+                        echo "Listing files and directories in the repo directory:"
+                        ls -lsa $SAP_AUTOMATION_REPO_PATH/
+
                         echo "Listing files and directories in the script directory:"
                         ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/
 
