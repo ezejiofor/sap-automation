@@ -102,6 +102,10 @@ stages:
                         echo "Listing files and directories in the sap-automation directory:"
                         ls -lsa sap-automation/
 
+                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+                        ls -lsa sap-automation/deploy/scripts/
+
+
 
 
                         echo "Listing files and directories in the repo directory:"
