@@ -74,45 +74,45 @@ stages:
                 - task:                PostBuildCleanup@4
                 # Set Variables.
                 # set permission on deploy_controlplane.sh file
-                - task:                AzureCLI@2
-                  continueOnError:     false
-                  inputs:
-                    azureSubscription: ${{parameters.connection_name}}
-                    scriptType:        bash
-                    scriptLocation:    inlineScript
-                    addSpnToEnvironment: true
-                    inlineScript: |
-                      #!/bin/bash
+                # - task:                AzureCLI@2
+                #   continueOnError:     false
+                #   inputs:
+                #     azureSubscription: ${{parameters.connection_name}}
+                #     scriptType:        bash
+                #     scriptLocation:    inlineScript
+                #     addSpnToEnvironment: true
+                #     inlineScript: |
+                #       #!/bin/bash
 
-                        echo "Debugging: Checking current permissions and environment information"
-                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+                #         echo "Debugging: Checking current permissions and environment information"
+                #         ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
 
-                        echo "Current user:"
-                        whoami
+                #         echo "Current user:"
+                #         whoami
 
-                        echo "Current working directory:"
-                        pwd
+                #         echo "Current working directory:"
+                #         pwd
 
-                        echo "Listing files and directories in the working directory:"
-                        ls -lsa
-
-
-                        echo "Listing files and directories in the sap-automation directory:"
-                        ls -lsa sap-automation/
-
-                        echo "Listing files and directories in the scripts folder within the deploy folder:"
-                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+                #         echo "Listing files and directories in the working directory:"
+                #         ls -lsa
 
 
+                #         echo "Listing files and directories in the sap-automation directory:"
+                #         ls -lsa sap-automation/
 
-                        echo "Setting execute permissions for deploy_controlplane.sh"
-                        sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
+                #         echo "Listing files and directories in the scripts folder within the deploy folder:"
+                #         ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
 
-                        echo "Listing files and directories in the scripts folder within the deploy folder:"
-                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
 
-                        echo "Debugging: Executing deploy_controlplane.sh script"
-                        ./sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                #         echo "Setting execute permissions for deploy_controlplane.sh"
+                #         sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                #         echo "Listing files and directories in the scripts folder within the deploy folder:"
+                #         ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                #         echo "Debugging: Executing deploy_controlplane.sh script"
+                #         ./sap-automation/deploy/scripts/deploy_controlplane.sh
 
                 - task:                AzureCLI@2
                   continueOnError:     false
@@ -411,6 +411,47 @@ stages:
                       USE_MSI:                        $(Use_MSI)
                       USE_WEBAPP:                     ${{ lower(parameters.use_webapp_param) }}
                       WEB_APP_CLIENT_SECRET:          $(WEB_APP_CLIENT_SECRET)
+
+
+                - task:                AzureCLI@2
+                  continueOnError:     false
+                  inputs:
+                    azureSubscription: ${{parameters.connection_name}}
+                    scriptType:        bash
+                    scriptLocation:    inlineScript
+                    addSpnToEnvironment: true
+                    inlineScript: |
+                      #!/bin/bash
+
+                        echo "Debugging: Checking current permissions and environment information"
+                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Current user:"
+                        whoami
+
+                        echo "Current working directory:"
+                        pwd
+
+                        echo "Listing files and directories in the working directory:"
+                        ls -lsa
+
+
+                        echo "Listing files and directories in the sap-automation directory:"
+                        ls -lsa sap-automation/
+
+                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+
+
+
+                        echo "Setting execute permissions for deploy_controlplane.sh"
+                        sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Debugging: Executing deploy_controlplane.sh script"
+                        ./sap-automation/deploy/scripts/deploy_controlplane.sh
 
     - stage: Deploy_controlplane
       dependsOn:
