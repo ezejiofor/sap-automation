@@ -704,26 +704,26 @@ stages:
 
                           export TF_LOG_PATH=${CONFIG_REPO_PATH}/.sap_deployment_automation/terraform.log
 
-                          ls -lsa $SAP_AUTOMATION_REPO_PATH/sap-automation/deploy/scripts/deploy_controlplane.sh
+                          ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
 
                           whoami
 
                           pwd
 
-                          sudo chmod +x $SAP_AUTOMATION_REPO_PATH/sap-automation/deploy/scripts/deploy_controlplane.sh
+                          sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
 
-                          ls -lsa $SAP_AUTOMATION_REPO_PATH/sap-automation/deploy/scripts/deploy_controlplane.sh
+                          ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
 
                           if [ "$USE_MSI" = "true" ]; then
                             echo -e "$cyan--- Using MSI ---$reset"
-                            $SAP_AUTOMATION_REPO_PATH/sap-automation/deploy/scripts/deploy_controlplane.sh                              \
+                            sap-automation/deploy/scripts/deploy_controlplane.sh                              \
                               --deployer_parameter_file ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)/$(deployerconfig) \
                               --library_parameter_file ${CONFIG_REPO_PATH}/LIBRARY/$(libraryfolder)/$(libraryconfig)     \
                               --subscription $STATE_SUBSCRIPTION                                                         \
                               --auto-approve --ado --msi                                                                 \
                               ${storage_account_parameter} ${keyvault_parameter}
                           else
-                            $SAP_AUTOMATION_REPO_PATH/sap-automation/deploy/scripts/deploy_controlplane.sh                              \
+                            sap-automation/deploy/scripts/deploy_controlplane.sh                              \
                               --deployer_parameter_file ${CONFIG_REPO_PATH}/DEPLOYER/$(deployerfolder)/$(deployerconfig) \
                               --library_parameter_file ${CONFIG_REPO_PATH}/LIBRARY/$(libraryfolder)/$(libraryconfig)     \
                               --subscription $STATE_SUBSCRIPTION  --spn_id $ARM_CLIENT_ID                                \
