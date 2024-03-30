@@ -111,18 +111,15 @@ stages:
                         echo "Listing files and directories in the repo directory:"
                         ls -lsa $SAP_AUTOMATION_REPO_PATH/
 
-                        echo "Listing files and directories in the script directory:"
-                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/
-
 
                         echo "Setting execute permissions for deploy_controlplane.sh"
-                        sudo chmod +x $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+                        sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
 
-                        echo "Debugging: Verifying permissions after setting execute permissions"
-                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
 
                         echo "Debugging: Executing deploy_controlplane.sh script"
-                        $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+                        sap-automation/deploy/scripts/deploy_controlplane.sh
                 - task:                AzureCLI@2
                   continueOnError:     false
                   inputs:
