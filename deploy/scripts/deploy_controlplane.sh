@@ -515,6 +515,8 @@ if [ 2 == $step ]; then
     allParams=$(printf " -p %s -d %s %s" "${library_file_parametername}" "${relative_path}" "${approveparam}")
     echo "${allParams}"
 
+    sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/install_library.sh
+
     "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/install_library.sh $allParams
     return_code=$?
     if [ 0 != $return_code ]; then
