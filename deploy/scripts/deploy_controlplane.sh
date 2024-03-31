@@ -406,6 +406,8 @@ if [ 1 == $step ] || [ 3 == $step ] ; then
         if [ -n "$spn_secret" ]; then
             allParams=$(printf " -e %s -r %s -v %s --spn_secret %s " "${environment}" "${region_code}" "${keyvault}" "${spn_secret}")
 
+            sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh
+
             "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh $allParams
             if [ -f secret.err ]; then
                 error_message=$(cat secret.err)
@@ -431,6 +433,8 @@ if [ 1 == $step ] || [ 3 == $step ] ; then
                   #$allParams as an array (); array math can be done in shell, allowing dynamic parameter lists to be created
                   #"${allParams[@]}" - quotes all elements of the array
 
+                  sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh
+
                   "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh $allParams
                   return_code=$?
                   if [ 0 != $return_code ]; then
@@ -439,6 +443,8 @@ if [ 1 == $step ] || [ 3 == $step ] ; then
               fi
             else
               allParams=$(printf " -e %s -r %s -v %s --subscription %s --msi " "${environment}" "${region_code}" "${keyvault}" "${subscription}")
+
+              sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh
 
               "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh $allParams
               if [ -f secret.err ]; then
