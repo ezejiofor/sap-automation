@@ -273,6 +273,8 @@ if [ 0 == $step ]; then
         rm -Rf .terraform terraform.tfstate*
     fi
 
+    sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/install_deployer.sh
+
     "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/install_deployer.sh $allParams
     return_code=$?
     if [ 0 != $return_code ]; then
