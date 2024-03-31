@@ -51,6 +51,12 @@ parameters:
   - name:                              force_reset
     displayName:                       Force a re-install - may require multiple re-runs
     type:                              boolean
+
+  - name:                              sap_automation_repo_path
+    displayName:                       "SAP-AUTOMATION REPO PATH"
+    type:                              string
+    default:                           sap-automation
+        
 stages:
     - stage: Prepare_Deployer
       condition: and(not(failed()), not(canceled()))
@@ -73,6 +79,44 @@ stages:
                 - template:            templates\download.yaml
                 - task:                PostBuildCleanup@4
                 # Set Variables.
+                # set permission on deploy_controlplane.sh file
+                - task:                AzureCLI@2
+                  continueOnError:     false
+                  inputs:
+                    azureSubscription: ${{parameters.connection_name}}
+                    scriptType:        bash
+                    scriptLocation:    inlineScript
+                    addSpnToEnvironment: true
+                    inlineScript: |
+                      #!/bin/bash
+
+                        echo "Debugging: Checking current permissions and environment information"
+                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Current user:"
+                        whoami
+
+                        echo "Current working directory:"
+                        pwd
+
+                        echo "Listing files and directories in the working directory:"
+                        ls -lsa
+
+
+                        echo "Listing files and directories in the sap-automation directory:"
+                        ls -lsa sap-automation/
+
+                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+
+
+
+                        echo "Setting execute permissions for deploy_controlplane.sh"
+                        sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
+
+                        echo "Listing files and directories in the scripts folder within the deploy folder:"
+                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
+
                 - task:                AzureCLI@2
                   continueOnError:     false
                   inputs:

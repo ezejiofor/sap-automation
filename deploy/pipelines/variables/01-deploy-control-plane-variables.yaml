@@ -35,6 +35,12 @@ parameters:
     type:                              string
     default:                           Control_Plane_Service_Connection
 
+  - name:                              sap_automation_repo_path
+    displayName:                       "SAP-AUTOMATION REPO PATH"
+    type:                              string
+    default:                           sap-automation
+
+
 
 variables:
   - group:                             "SDAF-General"
