@@ -53,10 +53,10 @@ parameters:
     displayName:                       Force a re-install - may require multiple re-runs
     type:                              boolean
 
-#   - name:                              sap_automation_repo_path
-#     displayName:                       "SAP-AUTOMATION REPO PATH"
-#     type:                              string
-#     default:                           sap-automation
+  - name:                              DEPLOYMENT_REPO_PATH
+    displayName:                       "DEPLOYMENT REPO PATH"
+    type:                              string
+    default:                           sap-automation
 
 stages:
     - stage: Prepare_Deployer
