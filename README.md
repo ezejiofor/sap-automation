@@ -20,6 +20,12 @@ The user guidance can be located here [SAP deployment automation framework](http
 
 If you want to contribute to our project, be sure to review the [contributing guidelines](/CONTRIBUTING.md).
 
+# WATCH THIS - GEORGE
+
+- sap-automation will be mapped to ```/sap-automation```
+- customer configuration repository will be mapped to ```/config```
+- sample repository will be mapped to ```/samples```
+
 We use [GitHub issues](https://github.com/ezejiofor/sap-automation/issues/) for feature requests and bugs.
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
