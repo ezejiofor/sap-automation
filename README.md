@@ -26,6 +26,20 @@ If you want to contribute to our project, be sure to review the [contributing gu
 - customer configuration repository will be mapped to ```/config```
 - sample repository will be mapped to ```/samples```
 
+
+```
+mkdir -p ${HOME}/Azure_SAP_Automated_Deployment; cd $_
+
+git clone https://github.com/Azure/sap-automation-bootstrap.git config
+
+git clone https://github.com/Azure/sap-automation.git sap-automation
+
+git clone https://github.com/Azure/sap-automation-samples.git samples
+
+cp -Rp samples/Terraform/WORKSPACES ${HOME}/Azure_SAP_Automated_Deployment/WORKSPACES
+
+```
+
 We use [GitHub issues](https://github.com/ezejiofor/sap-automation/issues/) for feature requests and bugs.
 
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a
