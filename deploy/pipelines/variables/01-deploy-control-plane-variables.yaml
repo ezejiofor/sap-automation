@@ -40,6 +40,11 @@ parameters:
     type:                              string
     default:                           sap-automation
 
+  - name:                              DEPLOYMENT_REPO_PATH
+    displayName:                       "DEPLOYMENT REPO PATH"
+    type:                              string
+    default:                           sap-automation    
+
 
 
 variables:
