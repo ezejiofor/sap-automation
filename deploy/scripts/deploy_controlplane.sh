@@ -620,6 +620,8 @@ if [ 3 == $step ]; then
 
     echo -e "$cyan calling installer.sh with parameters: $allParams"
 
+    sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/installer.sh
+
     "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/installer.sh $allParams
     return_code=$?
     if [ 0 != $return_code ]; then
@@ -654,6 +656,8 @@ if [ 4 == $step ]; then
     allParams=$(printf " --parameterfile %s --storageaccountname %s --type sap_library %s %s" "${library_file_parametername}" "${REMOTE_STATE_SA}" "${approveparam}"  "${ado_flag}")
 
     echo -e "$cyan calling installer.sh with parameters: $allParams"
+
+    sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/installer.sh
 
     "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/installer.sh $allParams
     return_code=$?
