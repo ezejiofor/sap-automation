@@ -71,48 +71,8 @@ stages:
                 clean:                 all
             steps:
                 - template:            templates\download.yaml
-                - task:                PostBuildCleanup@4
+                - task:                PostBuildCleanup@3
                 # Set Variables.
-                # set permission on deploy_controlplane.sh file
-                - task:                AzureCLI@2
-                  continueOnError:     false
-                  inputs:
-                    azureSubscription: ${{parameters.connection_name}}
-                    scriptType:        bash
-                    scriptLocation:    inlineScript
-                    addSpnToEnvironment: true
-                    inlineScript: |
-                      #!/bin/bash
-
-                        echo "Debugging: Checking current permissions and environment information"
-                        ls -lsa $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
-
-                        echo "Current user:"
-                        whoami
-
-                        echo "Current working directory:"
-                        pwd
-
-                        echo "Listing files and directories in the working directory:"
-                        ls -lsa
-
-
-                        echo "Listing files and directories in the sap-automation directory:"
-                        ls -lsa sap-automation/
-
-                        echo "Listing files and directories in the scripts folder within the deploy folder:"
-                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
-
-
-
-                        echo "Setting execute permissions for deploy_controlplane.sh"
-                        sudo chmod +x sap-automation/deploy/scripts/deploy_controlplane.sh
-
-                        echo "Listing files and directories in the scripts folder within the deploy folder:"
-                        ls -lsa sap-automation/deploy/scripts/deploy_controlplane.sh
-
-
-
                 - task:                AzureCLI@2
                   continueOnError:     false
                   inputs:
@@ -411,9 +371,6 @@ stages:
                       USE_WEBAPP:                     ${{ lower(parameters.use_webapp_param) }}
                       WEB_APP_CLIENT_SECRET:          $(WEB_APP_CLIENT_SECRET)
 
-
-
-
     - stage: Deploy_controlplane
       dependsOn:
           - Prepare_Deployer
@@ -435,7 +392,7 @@ stages:
             workspace:
                 clean: all
             steps:
-                - task: PostBuildCleanup@4
+                - task: PostBuildCleanup@3
                 - template: templates\download.yaml
                   parameters:
                     getLatestFromBranch: true
@@ -702,9 +659,7 @@ stages:
 
                           export TF_LOG_PATH=${CONFIG_REPO_PATH}/.sap_deployment_automation/terraform.log
 
-
-                          echo "Debugging: Executing deploy_controlplane.sh script"
-                          ./sap-automation/deploy/scripts/deploy_controlplane.sh
+                          sudo chmod +x $SAP_AUTOMATION_REPO_PATH/deploy/scripts/deploy_controlplane.sh
 
                           if [ "$USE_MSI" = "true" ]; then
                             echo -e "$cyan--- Using MSI ---$reset"
@@ -952,7 +907,7 @@ stages:
                 clean:                 all
             steps:
                 - template:            templates\download.yaml
-                - task:                PostBuildCleanup@4
+                - task:                PostBuildCleanup@3
                 - task:                DotNetCoreCLI@2
                   displayName:         "Build the Configuration Web Application"
                   inputs:
@@ -1010,4 +965,3 @@ stages:
                       WEBAPP_URL_BASE:         $(WEBAPP_URL_BASE)
                       WEBAPP_ID:               $(WEBAPP_ID)
                       WEBAPP_IDENTITY:         $(WEBAPP_IDENTITY)
-
