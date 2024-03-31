@@ -425,6 +425,8 @@ if [ 1 = "${deploy_using_msi_only:-}" ]; then
 
       echo "Calling set_secrets with " "${allParams}"
 
+      sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh
+
       "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh ${allParams}
 
       if [ -f secret.err ]; then
@@ -451,6 +453,8 @@ else
 
           allParams=$(printf " --workload --environment %s --region %s --vault %s --spn_secret %s --subscription %s --spn_id %s --tenant_id %s " "${environment}" "${region_code}" "${keyvault}" "${spn_secret}" "${subscription}" "${client_id}" "${tenant_id}" )
 
+          sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh
+
           "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh ${allParams}
 
           if [ -f secret.err ]; then
@@ -464,6 +468,8 @@ else
           answer=${ans^^}
           if [ ${answer} == 'Y' ]; then
               allParams=$(printf " --workload --environment %s --region %s --vault %s --subscription %s  --spn_id %s " "${environment}" "${region_code}" "${keyvault}" "${subscription}" "${client_id}" )
+
+              sudo chmod +x "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh
 
               "${SAP_AUTOMATION_REPO_PATH}"/deploy/scripts/set_secrets.sh ${allParams}
               if [ $? -eq 255 ]
