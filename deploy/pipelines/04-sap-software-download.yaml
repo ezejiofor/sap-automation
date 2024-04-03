@@ -36,7 +36,7 @@ parameters:
   - name:                              sample_repo_path
     displayName:                       The local path on the agent where the config repo can be found
     type:                              string
-    default:                           sap-automation
+    default:                           samples
 
   - name:                              ExtraParams
     displayName:                       Extra parameters to pass to Ansible
