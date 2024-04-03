@@ -64,7 +64,7 @@ parameters:
   - name:                              config_repo_path
     displayName:                       The local path on the agent where the config repo can be found
     type:                              string
-    default:                           sap-automation
+    default:                           config
 
   - name:                              control_plane_connection
     displayName:                       Service Connection Name for Control Plane
