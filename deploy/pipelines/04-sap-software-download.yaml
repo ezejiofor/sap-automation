@@ -204,6 +204,8 @@ stages:
               cd $CONFIG_REPO_PATH
 
               sample_path=$SAMPLE_REPO_PATH/SAP
+              BOM_NAME=$bom_base_name
+              KV_NAME=$deployer_kv_name
 
               echo -e "$green--- az login ---$reset"
                 if [ ! -n $ARM_SUBSCRIPTION_ID ]; then
