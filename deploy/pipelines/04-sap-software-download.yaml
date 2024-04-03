@@ -8,6 +8,13 @@ parameters:
   - name:                              bom_base_name
     displayName:                       Name of Bill of Materials (BoM)
     type:                              string
+    default:                           S42023SPS00_v0001ms
+
+  - name:                              deployer_kv_name
+    displayName:                       Name of Bill of Materials (BoM)
+    type:                              string
+    default:                           MGMTWEEUDEP01user321
+  
 
   - name:                              environment
     displayName:                       Control Plane Environment
@@ -232,7 +239,7 @@ stages:
                   fi
                 fi
 
-                command="ansible-playbook '-e "download_directory=$(Agent.TempDirectory)" -e "BOM_directory=${BOM_directory}" -e "bom_base_name=$(BOM_NAME)" -e "deployer_kv_name=$(KV_NAME)" -e "check_storage_account=$(check_storage_account)" ' $ExtraParams ${{ parameters.sap_automation_repo_path }}/deploy/ansible/playbook_bom_downloader.yaml"
+                command="ansible-playbook '-e "download_directory=$(Agent.TempDirectory)" -e "BOM_directory=${sample_path}" -e "bom_base_name=$(BOM_NAME)" -e "deployer_kv_name=$(KV_NAME)" -e "check_storage_account=$(check_storage_account)" ' $ExtraParams ${{ parameters.sap_automation_repo_path }}/deploy/ansible/playbook_bom_downloader.yaml"
 
                 echo "##[section]Executing [$command]..."
                 echo "##[group]- output"

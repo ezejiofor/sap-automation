@@ -5,7 +5,8 @@
 #--------------------------------------+---------------------------------------8
 
 parameters:
-  bom_base_name:                       ""
+  bom_base_name:                       "S42023SPS00_v0001ms"
+  deployer_kv_name:                    "MGMTWEEUDEP01user321"
   environment:                         ""
   re_download:                         false
   region:                              ""
