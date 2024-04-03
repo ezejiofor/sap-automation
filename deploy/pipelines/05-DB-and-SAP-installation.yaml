@@ -114,10 +114,12 @@ parameters:
   - name:                              sap_automation_repo_path
     displayName:                       The local path on the agent where the sap_automation repo can be found
     type:                              string
+    default:                           sap-automation
 
   - name:                              config_repo_path
     displayName:                       The local path on the agent where the config repo can be found
     type:                              string
+    default:                           sap-automation
 
 stages:
   - stage: Preparation_for_Ansible
