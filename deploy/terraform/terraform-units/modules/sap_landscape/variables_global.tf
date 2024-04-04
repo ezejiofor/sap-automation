@@ -218,7 +218,7 @@ variable "place_delete_lock_on_resources"                { description = "If def
 #########################################################################################
 
 
-variable "dns_label"                                     { description = "DNS label for the system, for example azure.contoso.net" }
+variable "dns_label"                                     { description = "DNS label for the system, for example azure.sdaf.contoso.net" }
 
 variable "dns_server_list"                               {
                                                            description = "The list of DNS Servers to associate with the VNet"
