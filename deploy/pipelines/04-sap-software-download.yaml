@@ -8,12 +8,17 @@ parameters:
   - name:                              bom_base_name
     displayName:                       Name of Bill of Materials (BoM)
     type:                              string
-    default:                           S42023SPS00_v0001ms
+    default:                           S42022SPS00_v0001ms
 
   - name:                              deployer_kv_name
-    displayName:                       Name of Bill of Materials (BoM)
+    displayName:                       Name of Deployer key-vault (BoM)
     type:                              string
     default:                           MGMTWEEUDEP01user321
+  
+  - name:                              BOM_directory
+    displayName:                       SAP samples working directory (BoM)
+    type:                              string
+    default:                           ${HOME}/Azure_SAP_Automated_Deployment/samples/SAP
   
 
   - name:                              environment
