@@ -13,12 +13,12 @@ parameters:
   - name:                              sap_system_configuration_name
     displayName:                       "SAP System configuration name, use the following syntax: ENV-LOCA-VNET-SID"
     type:                              string
-    default:                           DEV-WEEU-SAP01-X00
+    default:                           PREPROD-WEEU-SAP01-X00
 
   - name:                              environment
     displayName:                       Workload Environment (DEV, QUA, PRD, ...)
     type:                              string
-    default:                           DEV
+    default:                           PREPROD
 
   - name:                              bom_base_name
     displayName:                       HCMT Bill of Materials name
