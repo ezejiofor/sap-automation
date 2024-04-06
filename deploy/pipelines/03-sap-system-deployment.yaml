@@ -8,12 +8,12 @@ parameters:
   - name:                              sap_system
     displayName:                       "SAP System configuration name, use the following syntax: ENV-LOCA-VNET-SID"
     type:                              string
-    default:                           PREPROD-WEEU-SAP01-X00
+    default:                           PRD-WEEU-SAP01-X00
 
   - name:                              environment
     displayName:                       Workload Environment (DEV, QA, PRD, ...)
     type:                              string
-    default:                           PREPROD
+    default:                           PRD
 
   - name:                              sap_automation_repo_path
     displayName:                       The local path on the agent where the sap_automation repo can be found

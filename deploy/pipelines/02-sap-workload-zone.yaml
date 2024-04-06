@@ -9,12 +9,12 @@ parameters:
   - name:                              workload_zone
     displayName:                       "Workload zone configuration name, use the following syntax: ENV-LOCA-VNET-INFRASTRUCTURE"
     type:                              string
-    default:                           PREPROD-WEEU-SAP01-INFRASTRUCTURE
+    default:                           PRD-WEEU-SAP01-INFRASTRUCTURE
 
   - name:                              workload_environment
     displayName:                       Workload Environment (DEV, QA, PRD, ...)
     type:                              string
-    default:                           PREPROD
+    default:                           PRD
 
   - name:                              deployer_environment
     displayName:                       Deployer Environment name (MGMT, DEV, QA, PRD, ...)
