@@ -142,7 +142,7 @@ resource "azurerm_private_endpoint" "sapmnt" {
 
 #Private endpoint tend to take a while to be created, so we need to wait for it to be ready before we can use it
 resource "time_sleep" "wait_for_private_endpoints" {
-  create_duration                      = "120s"
+  create_duration                      = "180s"
 
   depends_on                           = [ azurerm_private_endpoint.sapmnt ]
 }

@@ -208,7 +208,7 @@ resource "azurerm_role_assignment" "subscription_contributor_system_identity" {
 
 #Private endpoint tend to take a while to be created, so we need to wait for it to be ready before we can use it
 resource "time_sleep" "wait_for_VM" {
-  create_duration                      = "120s"
+  create_duration                      = "180s"
 
   depends_on                           = [
                                            azurerm_linux_virtual_machine.deployer
@@ -226,7 +226,7 @@ resource "azurerm_virtual_machine_extension" "configure" {
   virtual_machine_id                   = azurerm_linux_virtual_machine.deployer[count.index].id
   publisher                            = "Microsoft.Azure.Extensions"
   type                                 = "CustomScript"
-  type_handler_version                 = "2.1"
+  type_handler_version                 = "2.0"
   protected_settings                   = jsonencode(
                                            {
                                              "script" = base64encode(
