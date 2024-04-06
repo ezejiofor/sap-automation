@@ -358,6 +358,9 @@ stages:
 
               echo -e "$green--- Run the remover script that destroys the SAP system ---$reset"
                 cd $CONFIG_REPO_PATH/SYSTEM/$(sap_system_folder)
+
+                chmod +x ${SAP_AUTOMATION_REPO_PATH}/deploy/scripts/remover.sh
+
                 ${SAP_AUTOMATION_REPO_PATH}/deploy/scripts/remover.sh \
                   --parameterfile $(sap_system_configuration) \
                   --type sap_system \
@@ -697,6 +700,8 @@ stages:
 
               echo -e "$green--- Run the remover script that destroys the SAP workload zone (landscape) ---$reset"
                 cd $CONFIG_REPO_PATH/LANDSCAPE/$(workload_zone_folder)
+
+                chmod +x ${SAP_AUTOMATION_REPO_PATH}/deploy/scripts/remover.sh
 
                 $SAP_AUTOMATION_REPO_PATH/deploy/scripts/remover.sh \
                   --parameterfile $(workload_zone_configuration_file) \
