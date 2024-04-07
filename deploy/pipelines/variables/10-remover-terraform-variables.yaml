@@ -42,3 +42,7 @@ variables:
 
   - name:                              this_agent
     value:                             $[lower(coalesce(variables['POOL'], variables['Agent']))]
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}      
+

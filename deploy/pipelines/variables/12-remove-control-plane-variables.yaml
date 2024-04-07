@@ -44,3 +44,7 @@ variables:
 
   - name:                              connection_name
     value:                             ${{ parameters.connection_name }}
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}      
+

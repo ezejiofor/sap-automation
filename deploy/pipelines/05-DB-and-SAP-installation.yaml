@@ -18,6 +18,11 @@ parameters:
     type:                              string
     default:                           PRD
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production     
+
   - name:                              bom_base_name
     displayName:                       Bill of Materials name
     type:                              string
@@ -129,6 +134,7 @@ stages:
       - template:                      variables/05-DB-and-SAP-installation-variables.yaml
         parameters:
           environment:                 ${{ parameters.environment }}
+          ASPNETCORE_ENVIRONMENT:      ${{ parameters.ASPNETCORE_ENVIRONMENT }}
     displayName:                       OS Configuration and SAP Installation
     jobs:
       - job:                           Installation_step
@@ -331,6 +337,7 @@ stages:
               EXTRA_PARAMETERS:              $(EXTRA_PARAMETERS)
               PIPELINE_EXTRA_PARAMETERS:     ${{ parameters.extra_params }}
               USE_MSI:                       $(USE_MSI)
+              ASPNETCORE_ENVIRONMENT:        ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - template:                        templates\run-ansible.yaml
             parameters:
               displayName:                   "Parameter validation"
@@ -348,6 +355,7 @@ stages:
               azureTenantId:                 $(ARM_TENANT_ID)
               azureSubscriptionId:           $(ARM_SUBSCRIPTION_ID)
               USE_MSI:                       $(USE_MSI)
+              ASPNETCORE_ENVIRONMENT:        ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.base_os_configuration, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -366,6 +374,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.sap_os_configuration, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -384,6 +393,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.bom_processing, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -402,6 +412,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.scs_installation, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -420,6 +431,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.database_install, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -438,6 +450,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.db_load, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -456,6 +469,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.high_availability_configuration, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -474,6 +488,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.pas_installation, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -492,6 +507,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.application_server_installation, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -510,6 +526,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.webdispatcher_installation, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -528,6 +545,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.post_configuration_actions, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -546,6 +564,7 @@ stages:
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.acss_registration, true) }}:
               - template:                    templates\acss-registration.yaml
                 parameters:
@@ -566,6 +585,7 @@ stages:
                   acssEnvironment:           ${{ parameters.acss_environment }}
                   acssSapProduct:            ${{ parameters.acss_sap_product }}
                   USE_MSI:                   $(USE_MSI)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - ${{ if eq(parameters.ams_provider, true) }}:
               - template:                    templates\run-ansible.yaml
                 parameters:
@@ -583,6 +603,7 @@ stages:
                   azureClientSecret:         $(ARM_CLIENT_SECRET)
                   azureTenantId:             $(ARM_TENANT_ID)
                   azureSubscriptionId:       $(ARM_SUBSCRIPTION_ID)
+                  ASPNETCORE_ENVIRONMENT:    ${{ parameters.ASPNETCORE_ENVIRONMENT }}
           - template:                          templates\collect-log-files.yaml
             parameters:
               logPath:                         ${{ parameters.config_repo_path }}/$(Deployment_Configuration_Path)/SYSTEM/${{ parameters.sap_system_configuration_name }}/logs

@@ -46,3 +46,7 @@ variables:
 
   - name:                              test_only
     value:                             ${{ parameters.test }}
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}      
+

@@ -15,6 +15,11 @@ parameters:
     type:                              string
     default:                           PRD
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production     
+
   - name:                              sap_automation_repo_path
     displayName:                       The local path on the agent where the sap_automation repo can be found
     type:                              string
@@ -38,6 +43,7 @@ stages:
           sap_system:                  ${{ parameters.sap_system }}
           environment:                 ${{ parameters.environment }}
           test:                        ${{ parameters.test }}
+          ASPNETCORE_ENVIRONMENT:      ${{ parameters.ASPNETCORE_ENVIRONMENT }}
     displayName:                       Deploy SAP infrastructure
     jobs:
       - job:                           Deploy_SAP_infrastructure
@@ -435,5 +441,6 @@ stages:
               WL_ARM_CLIENT_SECRET:     $(ARM_CLIENT_SECRET)
               WL_ARM_SUBSCRIPTION_ID:   $(ARM_SUBSCRIPTION_ID)
               WL_ARM_TENANT_ID:         $(ARM_TENANT_ID)
+              ASPNETCORE_ENVIRONMENT:   ${{ parameters.ASPNETCORE_ENVIRONMENT }}
 
             failOnStderr:               false

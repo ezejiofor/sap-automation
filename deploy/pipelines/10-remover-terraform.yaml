@@ -52,6 +52,11 @@ parameters:
     type:                              string
     default:                           MGMT
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production     
+
   - name:                              use_deployer
     displayName:                       Run removal on self hosted agent
     type:                              boolean
@@ -78,6 +83,7 @@ stages:
           workload_environment:        ${{ parameters.workload_environment }}
           workload_zone:               ${{ parameters.workload_zone }}
           sap_system:                  ${{ parameters.sap_system }}
+          ASPNETCORE_ENVIRONMENT:      ${{ parameters.ASPNETCORE_ENVIRONMENT }}
     jobs:
       - job:                           Remove_SAP_systems
         displayName:                   "Removing the SAP System"
@@ -437,6 +443,7 @@ stages:
               CONFIG_REPO_PATH:         ${{ parameters.config_repo_path }}/$(Deployment_Configuration_Path)
               LOGON_USING_SPN:          $(Logon_Using_SPN)
               USE_MSI:                  $(Use_MSI)
+              ASPNETCORE_ENVIRONMENT:   ${{ parameters.ASPNETCORE_ENVIRONMENT }}
 
             failOnStderr:               false
 
@@ -450,6 +457,7 @@ stages:
           workload_environment:        ${{ parameters.workload_environment }}
           workload_zone:               ${{ parameters.workload_zone }}
           sap_system:                  ${{ parameters.sap_system }}
+          ASPNETCORE_ENVIRONMENT:      ${{ parameters.ASPNETCORE_ENVIRONMENT }}
 
     jobs:
       - job:                           Remove_SAP_workload_zone
@@ -788,5 +796,6 @@ stages:
               CONFIG_REPO_PATH:         ${{ parameters.config_repo_path }}/$(Deployment_Configuration_Path)
               LOGON_USING_SPN:          $(Logon_Using_SPN)
               USE_MSI:                  $(Use_MSI)
+              ASPNETCORE_ENVIRONMENT:   ${{ parameters.ASPNETCORE_ENVIRONMENT }}
 
             failOnStderr:               false

@@ -45,3 +45,7 @@ variables:
 
   - name: sap_system_config
     value: ${{ parameters.sap_system }}.tfvars
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}      
+

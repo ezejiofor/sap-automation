@@ -38,3 +38,7 @@ variables:
 
   - name:                              key_vault
     value:                             $[variables['Deployer_Key_Vault']]
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}      
+

@@ -20,6 +20,11 @@ parameters:
     type:                              string
     default:                           PRD
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production    
+
   - name:                              bom_base_name
     displayName:                       HCMT Bill of Materials name
     type:                              string

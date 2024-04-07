@@ -21,6 +21,11 @@ parameters:
     type:                              string
     default:                           MGMT
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production     
+
   - name:                              use_deployer
     displayName:                       Run removal on self hosted agent
     type:                              boolean
@@ -50,6 +55,7 @@ stages:
           deployer_environment:        ${{ parameters.deployer_environment }}
           library:                     ${{ parameters.library }}
           use_deployer:                ${{ parameters.use_deployer }}
+          ASPNETCORE_ENVIRONMENT:      ${{ parameters.ASPNETCORE_ENVIRONMENT }}
     pool:
       name:                            $(POOL)
     jobs:
@@ -382,6 +388,7 @@ stages:
               TF_LOG:                   $(TF_LOG)
               USE_MSI:                  $(Use_MSI)
               DEPLOYER_RANDOM_ID_SEED:  $(DEPLOYER_RANDOM_ID_SEED)
+              ASPNETCORE_ENVIRONMENT:   ${{ parameters.ASPNETCORE_ENVIRONMENT }}
             failOnStderr: false
 
   - stage:                              Remove_control_plane
@@ -393,6 +400,7 @@ stages:
           deployer_environment:         ${{ parameters.deployer_environment }}
           library:                      ${{ parameters.library }}
           use_deployer:                 ${{ parameters.use_deployer }}
+          ASPNETCORE_ENVIRONMENT:       ${{ parameters.ASPNETCORE_ENVIRONMENT }}
     pool:
       name:                             $(Agent)
     dependsOn:
@@ -775,3 +783,4 @@ stages:
               TF_LOG:                   $(TF_LOG)
               USE_MSI:                  $(Use_MSI)
               DEPLOYER_RANDOM_ID_SEED:  $(DEPLOYER_RANDOM_ID_SEED)
+              ASPNETCORE_ENVIRONMENT:   ${{ parameters.ASPNETCORE_ENVIRONMENT }}

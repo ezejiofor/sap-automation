@@ -13,6 +13,11 @@ parameters:
     type:                              string
     default:                           MGMT
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production    
+
   - name:                              storage_account_name_sas
     displayName:                       The SAP software storage SAS token
     type:                              string
@@ -44,6 +49,9 @@ variables:
 
   - name:                              storage_account_name_sas
     value:                             ${{ parameters.storage_account_name_sas }}
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}      
 
 stages:
   - stage:                             Update_key_vault

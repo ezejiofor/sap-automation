@@ -8,6 +8,11 @@ parameters:
     type:                              string
     default:                           MGMT
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production    
+
   - name:                              deployer_region_parameter
     displayName:                       Deployer region name code (MGMT, DEV, QA, PRD, ...)
     type:                              string
@@ -81,6 +86,9 @@ variables:
   - name:                              library_file
     value:                             ${{ format('{0}-{1}-SAP_LIBRARY.tfvars', parameters.deployer_environment_parameter, parameters.deployer_region_parameter) }}
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}  
+
 stages:
   - stage:                             Create_Configuration
     displayName:                       Create Deployer Configuration
@@ -95,6 +103,8 @@ stages:
             persistCredentials:        true
           - task:                      PowerShell@2
             displayName:               "Create Sample configuration for the control plane"
+            env:
+              ASPNETCORE_ENVIRONMENT:  ${{ parameters.ASPNETCORE_ENVIRONMENT }}              
             inputs:
               targetType:              "inline"
 

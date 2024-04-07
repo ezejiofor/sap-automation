@@ -20,6 +20,11 @@ parameters:
     type:                              string
     default:                           MGMT
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production     
+
   - name:                              deployer_region
     displayName:                       Deployer region name code (MGMT, DEV, QA, PRD, ...)
     type:                              string

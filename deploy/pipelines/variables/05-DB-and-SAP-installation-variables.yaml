@@ -20,3 +20,6 @@ variables:
 
   - name:                              variable_group
     value:                             SDAF-${{ parameters.environment }}
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}      

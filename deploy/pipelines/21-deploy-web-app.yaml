@@ -23,6 +23,11 @@ parameters:
     type:                              string
     default:                           MGMT
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production    
+
   - name:                              workload_zone_deployment_pipeline
     displayName:                       "Workload zone pipeline name"
     type:                              string
@@ -65,6 +70,9 @@ variables:
 
   - name:                              sap_install_pipeline_name
     value:                             ${{ parameters.sap_install_pipeline }}
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}      
 
   - name:                              secret
     value:                             $[format('@Microsoft.KeyVault(SecretUri=https://{0}.vault.azure.net/secrets/PAT/)', variables.keyvault)]
@@ -154,6 +162,7 @@ stages:
                                                   -SAP_INSTALL_PIPELINE_ID $(SAP_INSTALL_PIPELINE_ID)
                                                   -SDAF_GENERAL_GROUP_ID $(SDAF_GENERAL_GROUP_ID)
                                                   -IS_PIPELINE_DEPLOYMENT true
+                                                  -ASPNETCORE_ENVIRONMENT $(ASPNETCORE_ENVIRONMENT)
                                                   -PAT $(secret)'
           - bash: |
               #!/bin/bash
@@ -161,3 +170,5 @@ stages:
 
               echo "##vso[task.uploadsummary]$(Build.Repository.LocalPath)/Web Application Configuration.md"
             displayName:                         'Documentation'
+            env:
+              ASPNETCORE_ENVIRONMENT:  ${{ parameters.ASPNETCORE_ENVIRONMENT }}            

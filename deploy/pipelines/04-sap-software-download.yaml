@@ -23,7 +23,13 @@ parameters:
 
   - name:                              environment
     displayName:                       Control Plane Environment
+    type:                              string
     default:                           MGMT
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production     
 
   - name:                              region
     displayName:                       Control Plane (SAP Library) location code
@@ -64,6 +70,7 @@ stages:
           environment:                 ${{ parameters.environment }}
           re_download:                 ${{ parameters.re_download }}
           region:                      ${{ parameters.region }}
+          ASPNETCORE_ENVIRONMENT:      ${{ parameters.ASPNETCORE_ENVIRONMENT }}
     displayName:                       Preparation
     jobs:
       - job: Prepare_download_job
@@ -180,6 +187,7 @@ stages:
               SAMPLE_REPO_PATH:         ${{ parameters.sample_repo_path }}
               CONFIG_REPO_PATH:         ${{ parameters.config_repo_path }}/$(Deployment_Configuration_Path)
               USE_MSI:                  $(Use_MSI)
+              ASPNETCORE_ENVIRONMENT:   ${{ parameters.ASPNETCORE_ENVIRONMENT }}
             failOnStderr:               false
 
   - stage:                             Software_download
@@ -190,6 +198,7 @@ stages:
           environment:                 ${{ parameters.environment }}
           re_download:                 ${{ parameters.re_download }}
           region:                      ${{ parameters.region }}
+          ASPNETCORE_ENVIRONMENT:      ${{ parameters.ASPNETCORE_ENVIRONMENT }}
     displayName:                       Download software
 
     jobs:
@@ -267,5 +276,6 @@ stages:
               ANSIBLE_COLLECTIONS_PATHS:     ~/.ansible/collections:/opt/ansible/collections
               USE_MSI:                       $(Use_MSI)
               ExtraParams:                   ${{ parameters.ExtraParams }}
+              ASPNETCORE_ENVIRONMENT:        ${{ parameters.ASPNETCORE_ENVIRONMENT }}
             failOnStderr:                    false
 

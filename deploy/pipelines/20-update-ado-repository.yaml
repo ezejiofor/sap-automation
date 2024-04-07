@@ -19,6 +19,11 @@ parameters:
     type:                              string
     default:                           main
 
+  - name:                              ASPNETCORE_ENVIRONMENT
+    displayName:                       "Environment name, MGMT, DEV, QA, etc"
+    type:                              string
+    default:                           Production     
+
   - name:                              tag
     displayName:                       Git tag to fetch
     type:                              string
@@ -58,6 +63,9 @@ variables:
     value:                             ${{ parameters.force }}
   - name:                              log
     value:                             logfile_$(Build.BuildId)
+
+  - name:                              ASPNETCORE_ENVIRONMENT
+    value:                             ${{ parameters.ASPNETCORE_ENVIRONMENT }}    
   #--------------------------------------------------------------------
   # Change:                                                        
   #   20230516 MKD
@@ -153,6 +161,7 @@ stages:
             displayName:               Update ADO repository
             env:
               SYSTEM_ACCESSTOKEN:      $(System.AccessToken)
+              ASPNETCORE_ENVIRONMENT:  ${{ parameters.ASPNETCORE_ENVIRONMENT }}
             #--------------------------------------------------------------------
             # Change:                                                        
             #   20230516 MKD
