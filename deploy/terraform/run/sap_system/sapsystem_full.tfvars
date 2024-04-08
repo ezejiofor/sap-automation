@@ -98,7 +98,7 @@ database_vm_image = {
 #Application tier
 enable_app_tier_deployment = true
 #app_tier_authentication_type="key"
-sid = "PRD"
+sid = "PROD"
 #app_tier_use_DHCP=false
 #app_tier_dual_nics=false
 app_tier_sizing_dictionary_key = "Optimized"

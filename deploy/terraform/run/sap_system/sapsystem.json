@@ -27,7 +27,7 @@
   ],
   "application": {
     "enable_deployment"                      : true,
-    "sid"                                    : "PRD",
+    "sid"                                    : "PROD",
     "scs_instance_number"                    : "01",
     "ers_instance_number"                    : "02",
     "scs_high_availability"                  : false,

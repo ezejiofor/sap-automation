@@ -8,12 +8,12 @@ parameters:
   - name:                              sap_system
     displayName:                       "SAP System configuration name, use the following syntax: ENV-LOCA-VNET-SID"
     type:                              string
-    default:                           PRD-WEEU-SAP01-X00
+    default:                           PROD-WEEU-SAP01-X00
 
   - name:                              environment
     displayName:                       Workload Environment (DEV, QA, PRD, ...)
     type:                              string
-    default:                           PRD
+    default:                           PROD
 
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"

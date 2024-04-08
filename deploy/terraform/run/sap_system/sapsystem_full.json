@@ -1,6 +1,6 @@
 {
   "infrastructure": {
-    "environment"                          : "NP",
+    "environment"                          : "PROD",
     "region"                               : "westeurope",
     "resource_group": {
       "name"                               : "",
@@ -116,7 +116,7 @@
     "authentication": {
       "type"                               : "key"
     },
-    "sid"                                  : "PRD",
+    "sid"                                  : "PROD",
     "use_DHCP"                             : false,
     "dual_nics"                            : false,
     "vm_sizing"                            : "Optimized",
