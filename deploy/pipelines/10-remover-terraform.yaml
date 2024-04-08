@@ -98,6 +98,8 @@ stages:
                 green="\e[1;32m" ; reset="\e[0m"
               echo -e "$green--- Checkout $(Build.SourceBranchName) ---$reset"
 
+              export ASPNETCORE_ENVIRONMENT=Production
+
               echo "##vso[build.updatebuildnumber]Removing the SAP System defined in $(sap_system_folder)"
 
               echo -e "$green--- Validations ---$reset"

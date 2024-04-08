@@ -113,6 +113,8 @@ stages:
                     git checkout -q $(Build.SourceBranchName)
                     git pull
 
+                    export ASPNETCORE_ENVIRONMENT=Production
+
                     $FolderName = "WORKSPACES"
                     $region = switch ("$(deployer_region)") {
                         "AUCE" { "australiacentral" }

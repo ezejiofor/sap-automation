@@ -85,6 +85,8 @@ stages:
 
                 export AZURE_DEVOPS_EXT_PAT=$PAT
 
+                export ASPNETCORE_ENVIRONMENT=Production
+
                 az extension add --name azure-devops --output none
 
                 export AZURE_DEVOPS_EXT_PAT=$PAT

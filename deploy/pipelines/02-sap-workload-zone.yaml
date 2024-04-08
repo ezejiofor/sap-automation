@@ -132,6 +132,9 @@ stages:
                   echo -e "$green --- Install dos2unix ---$reset"
                   sudo apt-get -qq install dos2unix
                   export AZURE_DEVOPS_EXT_PAT=$PAT
+
+                  export ASPNETCORE_ENVIRONMENT=Production
+
                 else
                   source /etc/profile.d/deploy_server.sh
                   export AZURE_DEVOPS_EXT_PAT=$PAT

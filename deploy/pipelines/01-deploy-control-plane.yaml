@@ -156,6 +156,9 @@ stages:
                             az config set extension.use_dynamic_install=yes_without_prompt
                             az --version
 
+                            export ASPNETCORE_ENVIRONMENT=Production
+
+
                             az extension add --name azure-devops --output none
 
                             echo "Agent:        " $(this_agent)

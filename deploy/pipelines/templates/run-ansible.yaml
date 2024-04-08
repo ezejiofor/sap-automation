@@ -24,6 +24,8 @@ steps:
     #Stage could be executed on a different machine by default, need to login again for ansible
     #If the deployer_file exists we run on a deployer configured by the framework instead of a azdo hosted one
 
+    export ASPNETCORE_ENVIRONMENT=Production
+
 
     export control_plane_subscription=$(Terraform_Remote_Storage_Subscription)
     deployer_file=/etc/profile.d/deploy_server.sh

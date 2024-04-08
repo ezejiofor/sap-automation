@@ -83,6 +83,9 @@ stages:
               echo -e "$green--- Update .sap_deployment_automation/config as DEPLOYMENT_REPO_PATH can change on devops agent ---$reset"
                 DEPLOYMENT_REPO_PATH=$(Build.Repository.LocalPath)
                 export HOME=$(Build.Repository.LocalPath)/$(Deployment_Configuration_Path)
+
+                export ASPNETCORE_ENVIRONMENT=Production
+
                 cd $HOME; mkdir -p .sap_deployment_automation
                 echo DEPLOYMENT_REPO_PATH=$DEPLOYMENT_REPO_PATH > .sap_deployment_automation/config
 

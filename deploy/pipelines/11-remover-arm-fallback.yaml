@@ -205,10 +205,13 @@ stages:
               #!/bin/bash
               green="\e[1;32m" ; reset="\e[0m"
 
+              export ASPNETCORE_ENVIRONMENT=Production
+
               echo -e "$green--- Adding deployment automation configuration to devops repository ---$reset"
                 export ENVIRONMENT=$(echo $(zone_folder) | awk -F'-' '{print $1}' | xargs) ; echo Environment $ENVIRONMENT
                 export    LOCATION=$(echo $(zone_folder) | awk -F'-' '{print $2}' | xargs) ; echo Location    $LOCATION
                 export     NETWORK=$(echo $(zone_folder) | awk -F'-' '{print $3}' | xargs) ; echo Network     $NETWORK
+              
 
                 cd $CONFIG_REPO_PATH
                 git config --global user.email "$(Build.RequestedForEmail)"
