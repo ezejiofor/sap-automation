@@ -293,6 +293,8 @@ stages:
 
               echo -e "$green--- Running the remove region script that destroys deployer VM and SAP library ---$reset"
 
+                chmod +x $SAP_AUTOMATION_REPO_PATH/deploy/scripts/remove_controlplane.sh
+
                 $SAP_AUTOMATION_REPO_PATH/deploy/scripts/remove_controlplane.sh                            \
                   --deployer_parameter_file $CONFIG_REPO_PATH/DEPLOYER/$(deployer_folder)/$(deployer_configuration_file) \
                   --library_parameter_file $CONFIG_REPO_PATH/LIBRARY/$(library_folder)/$(library_configuration_file)     \
