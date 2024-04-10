@@ -176,76 +176,6 @@ if ($Env:SDAF_APP_NAME.Length -ne 0) {
   $ApplicationName = $Env:SDAF_APP_NAME
 }
 
-#endregion
-
-#region Create DevOps project
-$Project_ID = (az devops project list --organization $ADO_ORGANIZATION --query "[value[]] | [0] | [? name=='$ADO_PROJECT'].id | [0]" --out tsv)
-
-if ($Project_ID.Length -eq 0) {
-  Write-Host "Creating the project: " $ADO_PROJECT -ForegroundColor Green
-  $Project_ID = (az devops project create --name $ADO_PROJECT --description 'SDAF Automation Project' --organization $ADO_ORGANIZATION --visibility private --source-control git --query id).Replace("""", "")
-
-  Add-Content -Path $fname -Value ""
-  Add-Content -Path $fname -Value "Using Azure DevOps Project: $ADO_PROJECT"
-
-  az devops configure --defaults organization=$ADO_ORGANIZATION project=$ADO_PROJECT
-
-  $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
-
-  Write-Host "Importing the content from GitHub" -ForegroundColor Green
-  az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
-
-  az repos update --repository $repo_id --default-branch main --output none
-
-}
-
-else {
-
-  Add-Content -Path $fname -Value ""
-  Add-Content -Path $fname -Value "DevOps Project: $ADO_PROJECT"
-
-  Write-Host "Using an existing project"
-
-  $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
-  if ($repo_id.Length -eq 0) {
-    Write-Host "Creating repository '$ADO_Project'" -ForegroundColor Green
-  }
-
-  az devops configure --defaults organization=$ADO_ORGANIZATION project=$ADO_PROJECT
-
-  $repo_size = (az repos list --query "[?name=='$ADO_Project'].size | [0]")
-
-  if ($repo_size -eq 0) {
-    Write-Host "Importing the repository from GitHub" -ForegroundColor Green
-
-    Add-Content -Path $fname -Value ""
-    Add-Content -Path $fname -Value "Terraform and Ansible code repository stored in the DevOps project (sap-automation)"
-
-    try {
-      az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
-    }
-    catch {
-      {
-        Write-Host "The repository already exists" -ForegroundColor Yellow
-      }
-    }
-  }
-  else {
-    $confirmation = Read-Host "The repository already exists, use it? y/n"
-    if ($confirmation -ne 'y') {
-      Write-Host "Creating repository 'SDAF Configuration'" -ForegroundColor Green
-      $repo_id = (az repos create --name "SDAF Configuration" --query id --output tsv)
-      az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
-    }
-  }
-
-  az repos update --repository $repo_id --default-branch main --output none
-
-}
-
-
-#endregion
-
 
 $confirmation = Read-Host "Use Agent pool with name '$Pool_Name' y/n?"
 if ($confirmation -ne 'y') {
@@ -282,6 +212,83 @@ Add-Content -Path $fname -Value "## Deployment details"
 Add-Content -Path $fname -Value ""
 Add-Content -Path $fname -Value "Azure DevOps organization: $ADO_Organization"
 
+#region Install extension
+
+Write-Host "Installing the DevOps extensions" -ForegroundColor Green
+$extension_name = (az devops extension list --organization $ADO_Organization --query "[?extensionName=='Post Build Cleanup'].extensionName | [0]")
+
+if ($extension_name.Length -eq 0) {
+  az devops extension install --organization $ADO_Organization --extension PostBuildCleanup --publisher-id mspremier --output none
+}
+
+#endregion
+
+#region Create DevOps project
+$Project_ID = (az devops project list --organization $ADO_ORGANIZATION --query "[value[]] | [0] | [? name=='$ADO_PROJECT'].id | [0]" --out tsv)
+
+if ($Project_ID.Length -eq 0) {
+  Write-Host "Creating the project: " $ADO_PROJECT -ForegroundColor Green
+  $Project_ID = (az devops project create --name $ADO_PROJECT --description 'SDAF Automation Project' --organization $ADO_ORGANIZATION --visibility private --source-control git --query id).Replace("""", "")
+
+  Add-Content -Path $fname -Value ""
+  Add-Content -Path $fname -Value "Using Azure DevOps Project: $ADO_PROJECT"
+
+  az devops configure --defaults organization=$ADO_ORGANIZATION project=$ADO_PROJECT
+
+  $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
+
+  Write-Host "Importing the content from GitHub" -ForegroundColor Green
+  az repos import create --git-url https://github.com/Azure/SAP-automation-bootstrap --repository $repo_id --output none
+
+  az repos update --repository $repo_id --default-branch main --output none
+
+}
+
+else {
+
+  Add-Content -Path $fname -Value ""
+  Add-Content -Path $fname -Value "DevOps Project: $ADO_PROJECT"
+
+  Write-Host "Using an existing project"
+
+  $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
+  if ($repo_id.Length -eq 0) {
+    Write-Host "Creating repository '$ADO_Project'" -ForegroundColor Green
+  }
+
+  az devops configure --defaults organization=$ADO_ORGANIZATION project=$ADO_PROJECT
+
+  $repo_size = (az repos list --query "[?name=='$ADO_Project'].size | [0]")
+
+  if ($repo_size -eq 0) {
+    Write-Host "Importing the repository from GitHub" -ForegroundColor Green
+
+    Add-Content -Path $fname -Value ""
+    Add-Content -Path $fname -Value "Terraform and Ansible code repository stored in the DevOps project (sap-automation)"
+
+    try {
+      az repos import create --git-url https://github.com/Azure/SAP-automation-bootstrap --repository $repo_id --output none
+    }
+    catch {
+      {
+        Write-Host "The repository already exists" -ForegroundColor Yellow
+      }
+    }
+  }
+  else {
+    $confirmation = Read-Host "The repository already exists, use it? y/n"
+    if ($confirmation -ne 'y') {
+      Write-Host "Creating repository 'SDAF Configuration'" -ForegroundColor Green
+      $repo_id = (az repos create --name "SDAF Configuration" --query id --output tsv)
+      az repos import create --git-url https://github.com/Azure/SAP-automation-bootstrap --repository $repo_id --output none
+    }
+  }
+
+  az repos update --repository $repo_id --default-branch main --output none
+
+}
+
+
 $confirmation = Read-Host "You can optionally import the Terraform and Ansible code from GitHub into Azure DevOps, however, this should only be done if you cannot access github from the Azure DevOps agent or if you intend to customize the code. Do you want to run the code from GitHub y/n?"
 if ($confirmation -ne 'y') {
   Add-Content -Path $fname -Value ""
@@ -292,7 +299,7 @@ if ($confirmation -ne 'y') {
   Write-Host "Creating $repo_name repository" -ForegroundColor Green
   az repos create --name $repo_name --query id --output none
   $code_repo_id = (az repos list --query "[?name=='$repo_name'].id | [0]" --out tsv)
-  az repos import create --git-url https://github.com/ezejiofor/SAP-automation --repository $code_repo_id --output none
+  az repos import create --git-url https://github.com/Azure/SAP-automation --repository $code_repo_id --output none
   az repos update --repository $code_repo_id --default-branch main --output none
 
   $import_code = $true
@@ -300,7 +307,7 @@ if ($confirmation -ne 'y') {
   Write-Host "Creating $repo_name repository" -ForegroundColor Green
   az repos create --name $repo_name --query id --output none
   $sample_repo_id = (az repos list --query "[?name=='$repo_name'].id | [0]" --out tsv)
-  az repos import create --git-url https://github.com/ezejiofor/SAP-automation-samples --repository $sample_repo_id --output none
+  az repos import create --git-url https://github.com/Azure/SAP-automation-samples --repository $sample_repo_id --output none
   az repos update --repository $sample_repo_id --default-branch main --output none
 
   if ($ADO_Project -ne "SAP Deployment Automation Framework") {
@@ -329,7 +336,7 @@ if ($confirmation -ne 'y') {
     Add-Content -Path $templatename "    - repository: sap-automation"
     Add-Content -Path $templatename "      type: git"
     Add-Content -Path $templatename "      name: $ADO_Project/sap-automation"
-    Add-Content -Path $templatename -Value ("       ref: refs/heads/main")
+    Add-Content -Path $templatename -Value ("      ref: refs/heads/main")
     #Add-Content -Path $templatename -Value ("      ref: refs/tags/" + $versionLabel)
 
     $cont = Get-Content -Path $templatename -Raw
@@ -378,7 +385,7 @@ if ($confirmation -ne 'y') {
     Add-Content -Path $templatename "    - repository: sap-automation"
     Add-Content -Path $templatename "      type: git"
     Add-Content -Path $templatename "      name: $ADO_Project/sap-automation"
-    Add-Content -Path $templatename -Value ("       ref: refs/heads/main")
+    Add-Content -Path $templatename -Value ("      ref: refs/heads/main")
     #Add-Content -Path $templatename -Value ("      ref: refs/tags/" + $versionLabel)
     Add-Content -Path $templatename "    - repository: sap-samples"
     Add-Content -Path $templatename "      type: git"
@@ -462,8 +469,8 @@ else {
   Add-Content -Path $templatename "    - repository: sap-automation"
   Add-Content -Path $templatename "      type: GitHub"
   Add-Content -Path $templatename -Value ("      endpoint: " + $ghConn)
-  Add-Content -Path $templatename "      name: ezejiofor/sap-automation"
-  Add-Content -Path $templatename "      ref: refs/heads/main"
+  Add-Content -Path $templatename "      name: Azure/sap-automation"
+  Add-Content -Path $templatename "     ref: refs/heads/main"
 #  Add-Content -Path $templatename -Value ("      ref: refs/tags/" + $versionLabel)
 
   $cont = Get-Content -Path $templatename -Raw
@@ -512,12 +519,12 @@ else {
   Add-Content -Path $templatename "   - repository: sap-automation"
   Add-Content -Path $templatename "     type: GitHub"
   Add-Content -Path $templatename -Value ("     endpoint: " + $ghConn)
-  Add-Content -Path $templatename "     name: ezejiofor/sap-automation"
+  Add-Content -Path $templatename "     name: Azure/sap-automation"
   Add-Content -Path $templatename "     ref: refs/heads/main"
   Add-Content -Path $templatename "   - repository: sap-samples"
   Add-Content -Path $templatename "     type: GitHub"
   Add-Content -Path $templatename -Value ("     endpoint: " + $ghConn)
-  Add-Content -Path $templatename "     name: ezejiofor/sap-automation-samples"
+  Add-Content -Path $templatename "     name: Azure/sap-automation-samples"
   Add-Content -Path $templatename "     ref: refs/heads/main"
 
   $cont2 = Get-Content -Path $templatename -Raw
@@ -556,18 +563,6 @@ else {
   Remove-Item $inputfile
 
 }
-
-#region Install extension
-
-Write-Host "Installing the DevOps extensions" -ForegroundColor Green
-$extension_name = (az devops extension list --organization $ADO_Organization --query "[?extensionName=='Post Build Cleanup'].extensionName | [0]")
-
-if ($extension_name.Length -eq 0) {
-  az devops extension install --organization $ADO_Organization --extension PostBuildCleanup --publisher-id mspremier --output none
-}
-
-
-
 
 #endregion
 
