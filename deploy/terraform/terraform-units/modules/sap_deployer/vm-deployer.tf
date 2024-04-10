@@ -62,8 +62,18 @@ resource "azurerm_network_interface" "deployer" {
                                                                             data.azurerm_subnet.subnet_mgmt[0].id) : (
                                                                             azurerm_subnet.subnet_mgmt[0].id
                                                                           )
-                                           private_ip_address            = "10.210.24.10"
-                                           private_ip_address_allocation = "Static"
+                                           private_ip_address            = try(var.deployer.private_ip_address[count.index], var.deployer.use_DHCP ? (
+                                                                             null) : (
+                                                                             cidrhost(
+                                                                               local.management_subnet_deployed_prefixes[0],
+                                                                               tonumber(count.index) + 4
+                                                                             )
+                                                                             )
+                                                                           )
+                                           private_ip_address_allocation = length(try(var.deployer.private_ip_address[count.index], "")) > 0 ? (
+                                                                             "Static") : (
+                                                                             "Dynamic"
+                                                                           )                                                                           
 
                                                                                   public_ip_address_id          = local.enable_deployer_public_ip ? azurerm_public_ip.deployer[count.index].id : null
                                          }
