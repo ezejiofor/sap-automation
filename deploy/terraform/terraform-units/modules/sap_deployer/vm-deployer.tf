@@ -27,6 +27,7 @@ resource "azurerm_public_ip" "deployer" {
                                            var.naming.resource_suffixes.pip
                                          )
   allocation_method                    = "Static"
+  ip_address                           = "10.210.24.10"
   sku                                  = "Standard"
   resource_group_name                  = local.resource_group_exists ? (
                                            data.azurerm_resource_group.deployer[0].name) : (
