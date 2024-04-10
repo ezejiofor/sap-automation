@@ -176,6 +176,76 @@ if ($Env:SDAF_APP_NAME.Length -ne 0) {
   $ApplicationName = $Env:SDAF_APP_NAME
 }
 
+#endregion
+
+#region Create DevOps project
+$Project_ID = (az devops project list --organization $ADO_ORGANIZATION --query "[value[]] | [0] | [? name=='$ADO_PROJECT'].id | [0]" --out tsv)
+
+if ($Project_ID.Length -eq 0) {
+  Write-Host "Creating the project: " $ADO_PROJECT -ForegroundColor Green
+  $Project_ID = (az devops project create --name $ADO_PROJECT --description 'SDAF Automation Project' --organization $ADO_ORGANIZATION --visibility private --source-control git --query id).Replace("""", "")
+
+  Add-Content -Path $fname -Value ""
+  Add-Content -Path $fname -Value "Using Azure DevOps Project: $ADO_PROJECT"
+
+  az devops configure --defaults organization=$ADO_ORGANIZATION project=$ADO_PROJECT
+
+  $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
+
+  Write-Host "Importing the content from GitHub" -ForegroundColor Green
+  az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
+
+  az repos update --repository $repo_id --default-branch main --output none
+
+}
+
+else {
+
+  Add-Content -Path $fname -Value ""
+  Add-Content -Path $fname -Value "DevOps Project: $ADO_PROJECT"
+
+  Write-Host "Using an existing project"
+
+  $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
+  if ($repo_id.Length -eq 0) {
+    Write-Host "Creating repository '$ADO_Project'" -ForegroundColor Green
+  }
+
+  az devops configure --defaults organization=$ADO_ORGANIZATION project=$ADO_PROJECT
+
+  $repo_size = (az repos list --query "[?name=='$ADO_Project'].size | [0]")
+
+  if ($repo_size -eq 0) {
+    Write-Host "Importing the repository from GitHub" -ForegroundColor Green
+
+    Add-Content -Path $fname -Value ""
+    Add-Content -Path $fname -Value "Terraform and Ansible code repository stored in the DevOps project (sap-automation)"
+
+    try {
+      az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
+    }
+    catch {
+      {
+        Write-Host "The repository already exists" -ForegroundColor Yellow
+      }
+    }
+  }
+  else {
+    $confirmation = Read-Host "The repository already exists, use it? y/n"
+    if ($confirmation -ne 'y') {
+      Write-Host "Creating repository 'SDAF Configuration'" -ForegroundColor Green
+      $repo_id = (az repos create --name "SDAF Configuration" --query id --output tsv)
+      az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
+    }
+  }
+
+  az repos update --repository $repo_id --default-branch main --output none
+
+}
+
+
+#endregion
+
 
 $confirmation = Read-Host "Use Agent pool with name '$Pool_Name' y/n?"
 if ($confirmation -ne 'y') {
@@ -494,73 +564,6 @@ $extension_name = (az devops extension list --organization $ADO_Organization --q
 
 if ($extension_name.Length -eq 0) {
   az devops extension install --organization $ADO_Organization --extension PostBuildCleanup --publisher-id mspremier --output none
-}
-
-#endregion
-
-#region Create DevOps project
-$Project_ID = (az devops project list --organization $ADO_ORGANIZATION --query "[value[]] | [0] | [? name=='$ADO_PROJECT'].id | [0]" --out tsv)
-
-if ($Project_ID.Length -eq 0) {
-  Write-Host "Creating the project: " $ADO_PROJECT -ForegroundColor Green
-  $Project_ID = (az devops project create --name $ADO_PROJECT --description 'SDAF Automation Project' --organization $ADO_ORGANIZATION --visibility private --source-control git --query id).Replace("""", "")
-
-  Add-Content -Path $fname -Value ""
-  Add-Content -Path $fname -Value "Using Azure DevOps Project: $ADO_PROJECT"
-
-  az devops configure --defaults organization=$ADO_ORGANIZATION project=$ADO_PROJECT
-
-  $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
-
-  Write-Host "Importing the content from GitHub" -ForegroundColor Green
-  az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
-
-  az repos update --repository $repo_id --default-branch main --output none
-
-}
-
-else {
-
-  Add-Content -Path $fname -Value ""
-  Add-Content -Path $fname -Value "DevOps Project: $ADO_PROJECT"
-
-  Write-Host "Using an existing project"
-
-  $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
-  if ($repo_id.Length -eq 0) {
-    Write-Host "Creating repository '$ADO_Project'" -ForegroundColor Green
-  }
-
-  az devops configure --defaults organization=$ADO_ORGANIZATION project=$ADO_PROJECT
-
-  $repo_size = (az repos list --query "[?name=='$ADO_Project'].size | [0]")
-
-  if ($repo_size -eq 0) {
-    Write-Host "Importing the repository from GitHub" -ForegroundColor Green
-
-    Add-Content -Path $fname -Value ""
-    Add-Content -Path $fname -Value "Terraform and Ansible code repository stored in the DevOps project (sap-automation)"
-
-    try {
-      az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
-    }
-    catch {
-      {
-        Write-Host "The repository already exists" -ForegroundColor Yellow
-      }
-    }
-  }
-  else {
-    $confirmation = Read-Host "The repository already exists, use it? y/n"
-    if ($confirmation -ne 'y') {
-      Write-Host "Creating repository 'SDAF Configuration'" -ForegroundColor Green
-      $repo_id = (az repos create --name "SDAF Configuration" --query id --output tsv)
-      az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
-    }
-  }
-
-  az repos update --repository $repo_id --default-branch main --output none
-
 }
 
 
