@@ -238,7 +238,7 @@ if ($Project_ID.Length -eq 0) {
   $repo_id = (az repos list --query "[?name=='$ADO_Project'].id | [0]" --out tsv)
 
   Write-Host "Importing the content from GitHub" -ForegroundColor Green
-  az repos import create --git-url https://github.com/Azure/SAP-automation-bootstrap --repository $repo_id --output none
+  az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
 
   az repos update --repository $repo_id --default-branch main --output none
 
@@ -267,7 +267,7 @@ else {
     Add-Content -Path $fname -Value "Terraform and Ansible code repository stored in the DevOps project (sap-automation)"
 
     try {
-      az repos import create --git-url https://github.com/Azure/SAP-automation-bootstrap --repository $repo_id --output none
+      az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
     }
     catch {
       {
@@ -280,7 +280,7 @@ else {
     if ($confirmation -ne 'y') {
       Write-Host "Creating repository 'SDAF Configuration'" -ForegroundColor Green
       $repo_id = (az repos create --name "SDAF Configuration" --query id --output tsv)
-      az repos import create --git-url https://github.com/Azure/SAP-automation-bootstrap --repository $repo_id --output none
+      az repos import create --git-url https://github.com/ezejiofor/SAP-automation-bootstrap --repository $repo_id --output none
     }
   }
 
@@ -299,7 +299,7 @@ if ($confirmation -ne 'y') {
   Write-Host "Creating $repo_name repository" -ForegroundColor Green
   az repos create --name $repo_name --query id --output none
   $code_repo_id = (az repos list --query "[?name=='$repo_name'].id | [0]" --out tsv)
-  az repos import create --git-url https://github.com/Azure/SAP-automation --repository $code_repo_id --output none
+  az repos import create --git-url https://github.com/ezejiofor/SAP-automation --repository $code_repo_id --output none
   az repos update --repository $code_repo_id --default-branch main --output none
 
   $import_code = $true
@@ -307,7 +307,7 @@ if ($confirmation -ne 'y') {
   Write-Host "Creating $repo_name repository" -ForegroundColor Green
   az repos create --name $repo_name --query id --output none
   $sample_repo_id = (az repos list --query "[?name=='$repo_name'].id | [0]" --out tsv)
-  az repos import create --git-url https://github.com/Azure/SAP-automation-samples --repository $sample_repo_id --output none
+  az repos import create --git-url https://github.com/ezejiofor/SAP-automation-samples --repository $sample_repo_id --output none
   az repos update --repository $sample_repo_id --default-branch main --output none
 
   if ($ADO_Project -ne "SAP Deployment Automation Framework") {

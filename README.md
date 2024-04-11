@@ -30,11 +30,11 @@ If you want to contribute to our project, be sure to review the [contributing gu
 ```
 mkdir -p ${HOME}/Azure_SAP_Automated_Deployment; cd $_
 
-git clone https://github.com/Azure/sap-automation-bootstrap.git config
+git clone https://github.com/ezejiofor/sap-automation-bootstrap.git config
 
-git clone https://github.com/Azure/sap-automation.git sap-automation
+git clone https://github.com/ezejiofor/sap-automation.git sap-automation
 
-git clone https://github.com/Azure/sap-automation-samples.git samples
+git clone https://github.com/ezejiofor/sap-automation-samples.git samples
 
 cp -Rp samples/Terraform/WORKSPACES ${HOME}/Azure_SAP_Automated_Deployment/WORKSPACES
 
