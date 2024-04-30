@@ -43,7 +43,7 @@ function showhelp {
     echo "#   Example:                                                                            #"
     echo "#                                                                                       #"
     echo "#   [REPO-ROOT]deploy/scripts/install_deployer.sh \                                     #"
-    echo "#      -p PROD-WEEU-DEP00-INFRASTRUCTURE.json \                                         #"
+    echo "#      -p DEV-WEEU-DEP00-INFRASTRUCTURE.json \                                         #"
     echo "#      -i true                                                                          #"
     echo "#                                                                                       #"
     echo "#########################################################################################"

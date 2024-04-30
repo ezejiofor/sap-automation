@@ -11,7 +11,7 @@ parameters:
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production    
+    default:                           Development    
 
   - name:                              deployer_region_parameter
     displayName:                       Deployer region name code (MGMT, DEV, QA, PRD, ...)
@@ -113,7 +113,7 @@ stages:
                     git checkout -q $(Build.SourceBranchName)
                     git pull
 
-                    export ASPNETCORE_ENVIRONMENT=Production
+                    export ASPNETCORE_ENVIRONMENT=Development
 
                     $FolderName = "WORKSPACES"
                     $region = switch ("$(deployer_region)") {

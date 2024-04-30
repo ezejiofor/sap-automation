@@ -8,17 +8,17 @@ parameters:
   - name:                              sap_system
     displayName:                       "SAP System configuration name, use the following syntax: ENV-LOCA-VNET-SID"
     type:                              string
-    default:                           PROD-WEEU-SAP01-X00
+    default:                           DEV-WEEU-SAP01-X00
 
   - name:                              environment
     displayName:                       Workload Environment (DEV, QA, PRD, ...)
     type:                              string
-    default:                           PROD
+    default:                           DEV
 
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production     
+    default:                           Development     
 
   - name:                              sap_automation_repo_path
     displayName:                       The local path on the agent where the sap_automation repo can be found
@@ -85,7 +85,7 @@ stages:
 
                 export AZURE_DEVOPS_EXT_PAT=$PAT
 
-                export ASPNETCORE_ENVIRONMENT=Production
+                export ASPNETCORE_ENVIRONMENT=Development
 
                 az extension add --name azure-devops --output none
 

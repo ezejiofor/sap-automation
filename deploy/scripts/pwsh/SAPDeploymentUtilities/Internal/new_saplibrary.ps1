@@ -19,7 +19,7 @@ function New-SAPLibrary {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    New-SAPLibrary -Parameterfile .\PROD-WEEU-SAP_LIBRARY.json -DeployerFolderRelativePath ..\..\DEPLOYER\PROD-WEEU-DEP00-INFRASTRUCTURE\
+    New-SAPLibrary -Parameterfile .\DEV-WEEU-SAP_LIBRARY.json -DeployerFolderRelativePath ..\..\DEPLOYER\DEV-WEEU-DEP00-INFRASTRUCTURE\
 
     
 .LINK

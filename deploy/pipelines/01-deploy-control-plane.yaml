@@ -24,7 +24,7 @@ parameters:
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production    
+    default:                           Development    
 
   - name:                              use_webapp_param
     displayName:                       "Deploy the configuration web application infrastructure"
@@ -156,7 +156,7 @@ stages:
                             az config set extension.use_dynamic_install=yes_without_prompt
                             az --version
 
-                            export ASPNETCORE_ENVIRONMENT=Production
+                            export ASPNETCORE_ENVIRONMENT=Development
 
 
                             az extension add --name azure-devops --output none

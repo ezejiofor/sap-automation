@@ -63,8 +63,8 @@ function showhelp {
     echo "#   Example:                                                                                                    #"
     echo "#                                                                                                               #"
     echo "#   SAP_AUTOMATION_REPO_PATH/scripts/remove_controlplane.sh \                                                   #"
-    echo "#      --deployer_parameter_file DEPLOYER/PROD-WEEU-DEP00-INFRASTRUCTURE/PROD-WEEU-DEP00-INFRASTRUCTURE.json \  #"
-    echo "#      --library_parameter_file LIBRARY/PROD-WEEU-SAP_LIBRARY/PROD-WEEU-SAP_LIBRARY.json \                      #"
+    echo "#      --deployer_parameter_file DEPLOYER/DEV-WEEU-DEP00-INFRASTRUCTURE/DEV-WEEU-DEP00-INFRASTRUCTURE.json \  #"
+    echo "#      --library_parameter_file LIBRARY/DEV-WEEU-SAP_LIBRARY/DEV-WEEU-SAP_LIBRARY.json \                      #"
     echo "#                                                                                                               #"
     echo "#################################################################################################################"
 }

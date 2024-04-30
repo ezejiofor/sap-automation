@@ -24,7 +24,7 @@ function New-SAPWorkloadZone {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    New-SAPWorkloadZone -Parameterfile .\PROD-WEEU-SAP00-infrastructure.json 
+    New-SAPWorkloadZone -Parameterfile .\DEV-WEEU-SAP00-infrastructure.json 
 
     
 .LINK

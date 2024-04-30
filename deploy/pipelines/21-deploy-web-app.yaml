@@ -26,7 +26,7 @@ parameters:
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production    
+    default:                           Development    
 
   - name:                              workload_zone_deployment_pipeline
     displayName:                       "Workload zone pipeline name"
@@ -95,7 +95,7 @@ stages:
               az devops configure --defaults organization=$(System.CollectionUri) project='$(System.TeamProject)'
               export AZURE_DEVOPS_EXT_PAT=$(System.AccessToken)
 
-              export ASPNETCORE_ENVIRONMENT=Production
+              export ASPNETCORE_ENVIRONMENT=Development
 
               WORKLOADZONE_PIPELINE_ID=$(az pipelines list --query "[?name=='$(workload_zone_deployment_pipeline_name)'].id | [0]")
               SYSTEM_PIPELINE_ID=$(az pipelines list --query "[?name=='$(system_deployment_pipeline_name)'].id | [0]")

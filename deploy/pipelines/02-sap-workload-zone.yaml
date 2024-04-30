@@ -9,12 +9,12 @@ parameters:
   - name:                              workload_zone
     displayName:                       "Workload zone configuration name, use the following syntax: ENV-LOCA-VNET-INFRASTRUCTURE"
     type:                              string
-    default:                           PROD-WEEU-SAP01-INFRASTRUCTURE
+    default:                           DEV-WEEU-SAP01-INFRASTRUCTURE
 
   - name:                              workload_environment
     displayName:                       Workload Environment (DEV, QA, PRD, ...)
     type:                              string
-    default:                           PROD
+    default:                           DEV
 
   - name:                              deployer_environment
     displayName:                       Deployer Environment name (MGMT, DEV, QA, PRD, ...)
@@ -24,7 +24,7 @@ parameters:
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production     
+    default:                           Development     
 
   - name:                              deployer_region
     displayName:                       Deployer region name code (MGMT, DEV, QA, PRD, ...)
@@ -133,7 +133,7 @@ stages:
                   sudo apt-get -qq install dos2unix
                   export AZURE_DEVOPS_EXT_PAT=$PAT
 
-                  export ASPNETCORE_ENVIRONMENT=Production
+                  export ASPNETCORE_ENVIRONMENT=Development
 
                 else
                   source /etc/profile.d/deploy_server.sh

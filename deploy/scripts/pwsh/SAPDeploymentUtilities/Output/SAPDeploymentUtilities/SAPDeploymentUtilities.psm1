@@ -122,8 +122,8 @@ function New-SAPAutomationRegion {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-     New-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\PROD-WEEU-DEP00-INFRASTRUCTURE\PROD-WEEU-DEP00-INFRASTRUCTURE.json 
-     -LibraryParameterfile .\LIBRARY\PROD-WEEU-SAP_LIBRARY\PROD-WEEU-SAP_LIBRARY.json 
+     New-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-WEEU-DEP00-INFRASTRUCTURE\DEV-WEEU-DEP00-INFRASTRUCTURE.json 
+     -LibraryParameterfile .\LIBRARY\DEV-WEEU-SAP_LIBRARY\DEV-WEEU-SAP_LIBRARY.json 
 
 
     .EXAMPLE 
@@ -135,8 +135,8 @@ function New-SAPAutomationRegion {
 
     # Provide the subscription and SPN details as parameters
 
-     New-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\PROD-WEEU-DEP00-INFRASTRUCTURE\PROD-WEEU-DEP00-INFRASTRUCTURE.json 
-     -LibraryParameterfile .\LIBRARY\PROD-WEEU-SAP_LIBRARY\PROD-WEEU-SAP_LIBRARY.json 
+     New-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-WEEU-DEP00-INFRASTRUCTURE\DEV-WEEU-DEP00-INFRASTRUCTURE.json 
+     -LibraryParameterfile .\LIBRARY\DEV-WEEU-SAP_LIBRARY\DEV-WEEU-SAP_LIBRARY.json 
      -Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
      -SPN_id yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
      -SPN_password ************************
@@ -568,7 +568,7 @@ function New-SAPDeployer {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    New-SAPDeployer -Parameterfile .\PROD-WEEU-MGMT00-INFRASTRUCTURE.json
+    New-SAPDeployer -Parameterfile .\DEV-WEEU-MGMT00-INFRASTRUCTURE.json
 
     
 .LINK
@@ -1435,7 +1435,7 @@ function New-SAPLibrary {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    New-SAPLibrary -Parameterfile .\PROD-WEEU-SAP_LIBRARY.json -DeployerFolderRelativePath ..\..\DEPLOYER\PROD-WEEU-DEP00-INFRASTRUCTURE\
+    New-SAPLibrary -Parameterfile .\DEV-WEEU-SAP_LIBRARY.json -DeployerFolderRelativePath ..\..\DEPLOYER\DEV-WEEU-DEP00-INFRASTRUCTURE\
 
     
 .LINK
@@ -1704,7 +1704,7 @@ function New-SAPWorkloadZone {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    New-SAPWorkloadZone -Parameterfile .\PROD-WEEU-SAP00-infrastructure.json 
+    New-SAPWorkloadZone -Parameterfile .\DEV-WEEU-SAP00-infrastructure.json 
 
     
 .LINK
@@ -2408,7 +2408,7 @@ function Read-SAPDeploymentTemplate {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    Read-SAPDeploymemtTemplat -Parameterfile .\PROD-WEEU-SAP00-X00.json -Type sap_system
+    Read-SAPDeploymemtTemplat -Parameterfile .\DEV-WEEU-SAP00-X00.json -Type sap_system
 
     .EXAMPLE 
 
@@ -2416,7 +2416,7 @@ function Read-SAPDeploymentTemplate {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    Read-SAPDeploymemtTemplat -Parameterfile .\PROD-WEEU-SAP_LIBRARY.json -Type sap_library
+    Read-SAPDeploymemtTemplat -Parameterfile .\DEV-WEEU-SAP_LIBRARY.json -Type sap_library
 
     
 .LINK
@@ -2796,8 +2796,8 @@ function Remove-SAPAutomationRegion {
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
 
-    Remove-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\PROD-WEEU-DEP00-INFRASTRUCTURE\PROD-WEEU-DEP00-INFRASTRUCTURE.json 
-     -LibraryParameterfile .\LIBRARY\PROD-WEEU-SAP_LIBRARY\PROD-WEEU-SAP_LIBRARY.json 
+    Remove-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-WEEU-DEP00-INFRASTRUCTURE\DEV-WEEU-DEP00-INFRASTRUCTURE.json 
+     -LibraryParameterfile .\LIBRARY\DEV-WEEU-SAP_LIBRARY\DEV-WEEU-SAP_LIBRARY.json 
     
 .LINK
     https://github.com/ezejiofor/sap-automation
@@ -3021,7 +3021,7 @@ function Remove-SAPSystem {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    Remove-System -Parameterfile .\PROD-WEEU-SAP00-X00.json -Type sap_system
+    Remove-System -Parameterfile .\DEV-WEEU-SAP00-X00.json -Type sap_system
 
     .EXAMPLE 
 
@@ -3029,7 +3029,7 @@ function Remove-SAPSystem {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    Remove-System -Parameterfile .\PROD-WEEU-SAP_LIBRARY.json -Type sap_library
+    Remove-System -Parameterfile .\DEV-WEEU-SAP_LIBRARY.json -Type sap_library
 
     
 .LINK
@@ -3334,7 +3334,7 @@ Function Set-SAPSPNSecrets {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    Set-SAPSPNSecrets -Environment PROD -VaultName <vaultname> -SPN_id <appId> -SPN_password <clientsecret> -Tenant_id <Tenant_idID> 
+    Set-SAPSPNSecrets -Environment DEV -VaultName <vaultname> -SPN_id <appId> -SPN_password <clientsecret> -Tenant_id <Tenant_idID> 
 
     
 .LINK

@@ -29,7 +29,7 @@ parameters:
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production     
+    default:                           Development     
 
   - name:                              region
     displayName:                       Control Plane (SAP Library) location code
@@ -87,7 +87,7 @@ stages:
                 az config set extension.use_dynamic_install=yes_without_prompt --output none
                 export AZURE_DEVOPS_EXT_PAT=$(System.AccessToken)
 
-                export ASPNETCORE_ENVIRONMENT=Production
+                export ASPNETCORE_ENVIRONMENT=Development
 
                 az devops configure --defaults organization=$(System.CollectionUri) project='$(System.TeamProject)' --output none
 

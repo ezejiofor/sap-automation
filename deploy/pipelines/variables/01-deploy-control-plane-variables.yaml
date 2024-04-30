@@ -23,7 +23,7 @@ parameters:
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production    
+    default:                           Development    
 
   - name:                              use_webapp_param
     displayName:                       "Deploy the configuration web application"

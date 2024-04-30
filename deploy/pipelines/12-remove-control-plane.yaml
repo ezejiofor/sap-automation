@@ -24,7 +24,7 @@ parameters:
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production     
+    default:                           Development     
 
   - name:                              use_deployer
     displayName:                       Run removal on self hosted agent
@@ -84,7 +84,7 @@ stages:
                 DEPLOYMENT_REPO_PATH=$(Build.Repository.LocalPath)
                 export HOME=$(Build.Repository.LocalPath)/$(Deployment_Configuration_Path)
 
-                export ASPNETCORE_ENVIRONMENT=Production
+                export ASPNETCORE_ENVIRONMENT=Development
 
                 cd $HOME; mkdir -p .sap_deployment_automation
                 echo DEPLOYMENT_REPO_PATH=$DEPLOYMENT_REPO_PATH > .sap_deployment_automation/config

@@ -16,7 +16,7 @@ parameters:
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production    
+    default:                           Development    
 
   - name:                              storage_account_name_sas
     displayName:                       The SAP software storage SAS token

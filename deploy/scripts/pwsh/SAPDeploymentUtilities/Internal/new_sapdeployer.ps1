@@ -16,7 +16,7 @@ function New-SAPDeployer {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    New-SAPDeployer -Parameterfile .\PROD-WEEU-MGMT00-INFRASTRUCTURE.json
+    New-SAPDeployer -Parameterfile .\DEV-WEEU-MGMT00-INFRASTRUCTURE.json
 
     
 .LINK

@@ -11,17 +11,17 @@ parameters:
   - name:                              sap_system_configuration_name
     displayName:                       "SAP System configuration name, use the following syntax: ENV-LOCA-VNET-SID"
     type:                              string
-    default:                           PROD-WEEU-SAP01-X00
+    default:                           DEV-WEEU-SAP01-X00
 
   - name:                              environment
     displayName:                       Workload Environment (DEV, QUA, PRD, ...)
     type:                              string
-    default:                           PROD
+    default:                           DEV
 
   - name:                              ASPNETCORE_ENVIRONMENT
     displayName:                       "Environment name, MGMT, DEV, QA, etc"
     type:                              string
-    default:                           Production     
+    default:                           Development     
 
   - name:                              bom_base_name
     displayName:                       Bill of Materials name
@@ -160,7 +160,7 @@ stages:
               echo -e "$green--- Convert config file to UX format ---$reset"
               echo -e "$green--- Update .sap_deployment_automation/config as DEPLOYMENT_REPO_PATH can change on devops agent ---$reset"
                 export HOME=${CONFIG_REPO_PATH}/$(Deployment_Configuration_Path)
-                export ASPNETCORE_ENVIRONMENT=Production
+                export ASPNETCORE_ENVIRONMENT=Development
                 cd $HOME
 
               echo -e "$green--- Configure devops CLI extension ---$reset"
