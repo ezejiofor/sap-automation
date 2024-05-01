@@ -2,22 +2,22 @@ name: Deploying the control plane defined in $(deployerfolder) $(libraryfolder)
 
 variables:
   # 01
-  deployer:                         "MGMTNIGHTLY-WEEU-DEP01-INFRASTRUCTURE"
-  library:                          "MGMTNIGHTLY-WEEU-SAP_LIBRARY"
+  deployer:                         "MGMTNIGHTLY-NOEU-DEP01-INFRASTRUCTURE"
+  library:                          "MGMTNIGHTLY-NOEU-SAP_LIBRARY"
   deployer_environment_parameter:   "MGMTNIGHTLY"
   use_webapp_param:                 "false"
   deploy_webapp_software:           "false"
   use_deployer:                     "true"
   # 02
-  workload_zone:                    "NIGHT-WEEU-XXX01-INFRASTRUCTURE"
+  workload_zone:                    "NIGHT-NOEU-XXX01-INFRASTRUCTURE"
   workload_environment_parameter:   "NIGHT"
-  deployer_region_parameter:        "WEEU"
+  deployer_region_parameter:        "NOEU"
   inherit_settings:                 "true"
   # 03
-  sap_system:                       "NIGHT-WEEU-XXX01-X01"
+  sap_system:                       "NIGHT-NOEU-XXX01-X01"
   # 04
   bom_base_name:                    "S4HANA_2021_ISS_v0001ms"
-  region:                           "WEEU"
+  region:                           "NOEU"
   re_download:                      "false"
   # 05
   base_os_configuration:            "true"

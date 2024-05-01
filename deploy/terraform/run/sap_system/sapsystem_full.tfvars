@@ -4,7 +4,7 @@ landscape_tfstate_key = null
 # Infrastructure block
 
 environment = "NP"
-location    = "westeurope"
+location    = "northeurope"
 #resourcegroup_name=""
 #resourcegroup_arm_id=""
 #proximityplacementgroup_names=[]
@@ -31,32 +31,32 @@ network_address_space = "10.1.0.0/16"
 
 #admin_subnet_name=""
 admin_subnet_address_prefix = "10.1.1.0/24"
-#admin_subnet_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/virtualNetworks/DEV-WEEU-SAP01-vnet/subnets/DEV-WEEU-SAP01-subnet_admin"
+#admin_subnet_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/virtualNetworks/DEV-NOEU-SAP01-vnet/subnets/DEV-NOEU-SAP01-subnet_admin"
 #admin_subnet_nsg_name=""
-#admin_subnet_nsg_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/networkSecurityGroups/DEV-WEEU-SAP01_adminSubnet-nsg"
+#admin_subnet_nsg_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/networkSecurityGroups/DEV-NOEU-SAP01_adminSubnet-nsg"
 
 #db_subnet_name=""
 db_subnet_address_prefix = "10.1.2.0/24"
-#db_subnet_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/virtualNetworks/DEV-WEEU-SAP01-vnet/subnets/DEV-WEEU-SAP01-subnet_db"
-#db_subnet_nsg_name="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/networkSecurityGroups/DEV-WEEU-SAP01_dbSubnet-nsg"
+#db_subnet_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/virtualNetworks/DEV-NOEU-SAP01-vnet/subnets/DEV-NOEU-SAP01-subnet_db"
+#db_subnet_nsg_name="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/networkSecurityGroups/DEV-NOEU-SAP01_dbSubnet-nsg"
 #db_subnet_nsg_arm_id=""
 
 #app_subnet_name=""
 app_subnet_address_prefix = "10.1.3.0/24"
-#app_subnet_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/virtualNetworks/DEV-WEEU-SAP01-vnet/subnets/DEV-WEEU-SAP01-subnet_app"
+#app_subnet_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/virtualNetworks/DEV-NOEU-SAP01-vnet/subnets/DEV-NOEU-SAP01-subnet_app"
 #app_subnet_nsg_name=""
-#app_subnet_nsg_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/networkSecurityGroups/DEV-WEEU-SAP01_appSubnet-nsg"
+#app_subnet_nsg_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/networkSecurityGroups/DEV-NOEU-SAP01_appSubnet-nsg"
 
 #web_subnet_name=""
 web_subnet_address_prefix = "10.1.4.0/24"
-#web_subnet_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/virtualNetworks/DEV-WEEU-SAP01-vnet/subnets/DEV-WEEU-SAP01-subnet_web"
+#web_subnet_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/virtualNetworks/DEV-NOEU-SAP01-vnet/subnets/DEV-NOEU-SAP01-subnet_web"
 #web_subnet_nsg_name=""
-#web_subnet_nsg_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/networkSecurityGroups/DEV-WEEU-SAP01_webSubnet-nsg"
+#web_subnet_nsg_arm_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-INFRASTRUCTURE/providers/Microsoft.Network/networkSecurityGroups/DEV-NOEU-SAP01_webSubnet-nsg"
 
 #Database VM
 
 #database_vm_authentication_type="key"
-#database_vm_avset_arm_ids=[/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-WEEU-SAP01-X00/providers/Microsoft.Compute/availabilitySets/DEV-WEEU-X00_db_avset"
+#database_vm_avset_arm_ids=[/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/DEV-NOEU-SAP01-EQ2/providers/Microsoft.Compute/availabilitySets/DEV-NOEU-EQ2_db_avset"
 database_vm_image = {
   os_type         = ""
   source_image_id = ""

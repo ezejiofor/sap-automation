@@ -16,7 +16,7 @@ parameters:
   - name:                              deployer_region_parameter
     displayName:                       Deployer region name code (MGMT, DEV, QA, PRD, ...)
     type:                              string
-    default:                           WEEU
+    default:                           NOEU
     values:
       - AUCE
       - AUC2

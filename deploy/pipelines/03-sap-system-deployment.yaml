@@ -8,7 +8,7 @@ parameters:
   - name:                              sap_system
     displayName:                       "SAP System configuration name, use the following syntax: ENV-LOCA-VNET-SID"
     type:                              string
-    default:                           DEV-WEEU-SAP01-X00
+    default:                           DEV-NOEU-SAP01-EQ2
 
   - name:                              environment
     displayName:                       Workload Environment (DEV, QA, PRD, ...)
@@ -199,7 +199,7 @@ stages:
                   "WEUS") LOCATION_IN_FILENAME="westus" ;;
                   "WUS2") LOCATION_IN_FILENAME="westus2" ;;
                   "WUS3") LOCATION_IN_FILENAME="westus3" ;;
-                  *) LOCATION_IN_FILENAME="westeurope" ;;
+                  *) LOCATION_IN_FILENAME="northeurope" ;;
                 esac
 
                 echo "Environment(filename): $ENVIRONMENT_IN_FILENAME"

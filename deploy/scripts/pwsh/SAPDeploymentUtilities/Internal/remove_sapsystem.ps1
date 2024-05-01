@@ -18,7 +18,7 @@ function Remove-SAPSystem {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    Remove-System -Parameterfile .\DEV-WEEU-SAP00-X00.json -Type sap_system
+    Remove-System -Parameterfile .\DEV-NOEU-SAP00-EQ2.json -Type sap_system
 
     .EXAMPLE 
 
@@ -26,7 +26,7 @@ function Remove-SAPSystem {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-    Remove-System -Parameterfile .\DEV-WEEU-SAP_LIBRARY.json -Type sap_library
+    Remove-System -Parameterfile .\DEV-NOEU-SAP_LIBRARY.json -Type sap_library
 
     
 .LINK

@@ -1,7 +1,7 @@
 {
   "infrastructure": {
     "environment"                            : "np",
-    "region"                                 : "westeurope",
+    "region"                                 : "northeurope",
     "vnets": {
       "sap": {
         "name"                               : "SAP01"

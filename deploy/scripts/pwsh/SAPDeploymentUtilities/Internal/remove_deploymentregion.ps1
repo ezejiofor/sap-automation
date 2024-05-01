@@ -20,8 +20,8 @@ function Remove-SAPAutomationRegion {
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
 
-    Remove-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-WEEU-DEP00-INFRASTRUCTURE\DEV-WEEU-DEP00-INFRASTRUCTURE.json 
-     -LibraryParameterfile .\LIBRARY\DEV-WEEU-SAP_LIBRARY\DEV-WEEU-SAP_LIBRARY.json 
+    Remove-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-NOEU-DEP00-INFRASTRUCTURE\DEV-NOEU-DEP00-INFRASTRUCTURE.json 
+     -LibraryParameterfile .\LIBRARY\DEV-NOEU-SAP_LIBRARY\DEV-NOEU-SAP_LIBRARY.json 
     
 .LINK
     https://github.com/ezejiofor/sap-automation

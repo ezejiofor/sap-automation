@@ -36,8 +36,8 @@ function New-SAPAutomationRegion {
     #
     # Import the module
     Import-Module "SAPDeploymentUtilities.psd1"
-     New-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-WEEU-DEP00-INFRASTRUCTURE\DEV-WEEU-DEP00-INFRASTRUCTURE.json 
-     -LibraryParameterfile .\LIBRARY\DEV-WEEU-SAP_LIBRARY\DEV-WEEU-SAP_LIBRARY.json 
+     New-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-NOEU-DEP00-INFRASTRUCTURE\DEV-NOEU-DEP00-INFRASTRUCTURE.json 
+     -LibraryParameterfile .\LIBRARY\DEV-NOEU-SAP_LIBRARY\DEV-NOEU-SAP_LIBRARY.json 
 
 
     .EXAMPLE 
@@ -49,8 +49,8 @@ function New-SAPAutomationRegion {
 
     # Provide the subscription and SPN details as parameters
 
-     New-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-WEEU-DEP00-INFRASTRUCTURE\DEV-WEEU-DEP00-INFRASTRUCTURE.json 
-     -LibraryParameterfile .\LIBRARY\DEV-WEEU-SAP_LIBRARY\DEV-WEEU-SAP_LIBRARY.json 
+     New-SAPAutomationRegion -DeployerParameterfile .\DEPLOYER\DEV-NOEU-DEP00-INFRASTRUCTURE\DEV-NOEU-DEP00-INFRASTRUCTURE.json 
+     -LibraryParameterfile .\LIBRARY\DEV-NOEU-SAP_LIBRARY\DEV-NOEU-SAP_LIBRARY.json 
      -Subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
      -SPN_id yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy
      -SPN_password ************************

@@ -9,7 +9,7 @@ parameters:
   - name:                              workload_zone
     displayName:                       "Workload zone configuration name, use the following syntax: ENV-LOCA-VNET-INFRASTRUCTURE"
     type:                              string
-    default:                           DEV-WEEU-SAP01-INFRASTRUCTURE
+    default:                           DEV-NOEU-SAP01-INFRASTRUCTURE
 
   - name:                              workload_environment
     displayName:                       Workload Environment (DEV, QA, PRD, ...)
@@ -29,7 +29,7 @@ parameters:
   - name:                              deployer_region
     displayName:                       Deployer region name code (MGMT, DEV, QA, PRD, ...)
     type:                              string
-    default:                           WEEU
+    default:                           NOEU
     values:
       - AUCE
       - AUC2
@@ -265,7 +265,7 @@ stages:
                   "WEUS") LOCATION_IN_FILENAME="westus" ;;
                   "WUS2") LOCATION_IN_FILENAME="westus2" ;;
                   "WUS3") LOCATION_IN_FILENAME="westus3" ;;
-                  *) LOCATION_IN_FILENAME="westeurope" ;;
+                  *) LOCATION_IN_FILENAME="northeurope" ;;
                 esac
 
                 NETWORK_IN_FILENAME=$(echo $(workload_zone_folder) | awk -F'-' '{print $3}' | xargs )

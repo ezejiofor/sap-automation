@@ -51,7 +51,7 @@ showhelp()
     echo "#   Example:                                                                            #"
     echo "#                                                                                       #"
     echo "#   [REPO-ROOT]deploy/scripts/validate.sh \                                             #"
-    echo "#      --parameterfile DEV-WEEU-DEP00-INFRASTRUCTURE.json \                            #"
+    echo "#      --parameterfile DEV-NOEU-DEP00-INFRASTRUCTURE.json \                            #"
     echo "#      --type sap_deployer                                                              #"
     echo "#                                                                                       #"
     echo "#########################################################################################"

@@ -34,7 +34,7 @@ parameters:
   - name: region
     displayName: Control Plane (SAP Library) location code
     type: string
-    default: WEEU
+    default: NOEU
 
   - name: re_download
     displayName: Re-download software from SAP

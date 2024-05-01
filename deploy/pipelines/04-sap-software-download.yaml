@@ -13,7 +13,7 @@ parameters:
   - name:                              deployer_kv_name
     displayName:                       Name of Deployer key-vault (BoM)
     type:                              string
-    default:                           MGMTWEEUDEP01user321
+    default:                           MGMTNOEUDEP01user321
   
   - name:                              BOM_directory
     displayName:                       SAP samples working directory (BoM)
@@ -34,7 +34,7 @@ parameters:
   - name:                              region
     displayName:                       Control Plane (SAP Library) location code
     type:                              string
-    default:                           WEEU
+    default:                           NOEU
 
   - name:                              re_download
     displayName:                       Re-download software from SAP

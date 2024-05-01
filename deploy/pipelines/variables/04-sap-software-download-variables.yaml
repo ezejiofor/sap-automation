@@ -6,7 +6,7 @@
 
 parameters:
   bom_base_name:                       "S42023SPS00_v0001ms"
-  deployer_kv_name:                    "MGMTWEEUDEP01user321"
+  deployer_kv_name:                    "MGMTNOEUDEP01user321"
   BOM_directory:                       "${HOME}/Azure_SAP_Automated_Deployment/samples/SAP"
   environment:                         ""
   re_download:                         false

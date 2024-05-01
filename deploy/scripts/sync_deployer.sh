@@ -29,7 +29,7 @@ function showhelp {
     echo "#   Example:                                                                            #"
     echo "#                                                                                       #"
     echo "#   [REPO-ROOT]deploy/scripts/sync_deployer.sh \                                        #"
-    echo "#      --storageaccountname mgmtweeutfstate### \                                        #"
+    echo "#      --storageaccountname mgmtnoeutfstate### \                                        #"
     echo "#      --state_subscription xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx                        #"
     echo "#                                                                                       #"
     echo "#########################################################################################"

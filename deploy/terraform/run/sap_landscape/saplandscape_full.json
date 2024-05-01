@@ -3,7 +3,7 @@
     "deployer_tfstate_key"                             : "",
     "infrastructure": {
         "environment"                                  : "np",
-        "region"                                       : "westeurope",
+        "region"                                       : "northeurope",
         "resource_group": {
             "name"                                     : "azure-test-saplandscape-rg",
             "arm_id"                                   : ""
@@ -59,7 +59,7 @@
                 },
                     
                 "subnet_iscsi": {
-                    "name"                             : "global-WEEU-sap0_iscsi-subnet",
+                    "name"                             : "global-NOEU-sap0_iscsi-subnet",
                     "prefix"                           : "10.1.0.0/24",
                     "nsg" :
                     {
